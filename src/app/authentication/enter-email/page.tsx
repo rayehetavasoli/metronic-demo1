@@ -3,6 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import { useState } from 'react';
 import { validateEmail } from '@/utils/auth';
+import {ArrowRight} from 'iconsax-react';
 
 function EnterEmail() {
 
@@ -46,8 +47,7 @@ function EnterEmail() {
      </div>
      <Link className="btn btn-primary flex justify-center grow" href="/authentication/check-email">
       Contoinue
-      <i className="ki-filled ki-black-right">
-      </i>
+      <ArrowRight size="16" color="#000"/>
      </Link>
     </form>
    </div>

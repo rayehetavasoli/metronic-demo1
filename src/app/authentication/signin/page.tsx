@@ -3,20 +3,26 @@ import React from 'react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { validateEmail , validatePassword } from '@/utils/auth';
+import { Eye , EyeSlash } from 'iconsax-react';
 //import {RepoFactory} from '@/BaseRepository/Factory';
 
 function Signin() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [showErrors, setShowErrors] = useState(false);
 
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
     //const authRepository = RepoFactory.get("auth");
 
     // change Handeler !!
     const emailChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value);
       };
-      const passwordChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+    const passwordChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
         setPassword(e.currentTarget.value);
       };
 
@@ -26,6 +32,7 @@ function Signin() {
      
       const signinHandler = async (event:any) => {
         event.preventDefault();
+        setShowErrors(true);
       }
 
 
@@ -35,7 +42,7 @@ function Signin() {
   return (
     <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg">
     <div className="card max-w-[370px] w-full">
-        <form onSubmit={signinHandler} className="card-body flex flex-col gap-5 p-10" id="sign_in_form" data-gtm-form-interact-id="0">
+        <form onSubmit={signinHandler} className="card-body flex flex-col gap-5 p-10" id="sign_in_form">
             <div className="text-center mb-2.5">
                 <h3 className="text-lg font-medium text-gray-900 leading-none mb-2.5">
                     Sign in
@@ -71,7 +78,7 @@ function Signin() {
                     value={email}
                     onChange={emailChangeHandler}
                     required />
-                    {!isValidEmail && <p className="error-text"> Your email is not correct!</p>}
+                    {showErrors && !isValidEmail && <p className="error-text"> Your email is not correct!</p>}
 
             </div>
 
@@ -84,21 +91,24 @@ function Signin() {
                         Forgot Password?
                     </Link>
                 </div>
-                <div className="input" data-toggle-password="true">
+                <div className="input" >
                     <input 
                         name="user_password" 
                         placeholder="Enter Password" 
-                        type="password" 
+                        type={showPassword ? 'text' : 'password'}
                         value={password}
                         onChange={passwordChangeHandler} 
                         required/>
-                    <button className="btn btn-icon" data-toggle-password-trigger="true" type="button">
-                    <i className="ki-filled ki-eye text-gray-500 toggle-password-active:hidden">
-                    </i>
-                    <i className="ki-filled ki-eye-slash text-gray-500 hidden toggle-password-active:block">
-                    </i>
-                    </button>
-                    {!isValidPassword && <p className="error-text"> Your password is not valid!</p>}
+                    <button
+                        type="button"
+                        onClick={togglePasswordVisibility}
+                        className="btn btn-icon">
+                    {showPassword ? (
+                    <Eye color='#4A4A4A' size="24"/>
+                    ) : (
+                    <EyeSlash color='#4A4A4A' size="24"/>
+                    )}</button>
+                    {showErrors && !isValidPassword && <p className="error-text"> Your password is not valid!</p>}
                 </div>
             </div>
 
