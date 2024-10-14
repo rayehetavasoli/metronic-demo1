@@ -40,7 +40,7 @@ function Signin() {
 
 
   return (
-    <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg">
+    <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg h-lvh">
     <div className="card max-w-[370px] w-full">
         <form onSubmit={signinHandler} className="card-body flex flex-col gap-5 p-10" id="sign_in_form">
             <div className="text-center mb-2.5">
@@ -72,7 +72,7 @@ function Signin() {
                  Email
                 </label>
                 <input 
-                    className="input" 
+                    className="input"
                     placeholder="email@email.com" 
                     type="text" 
                     value={email}
@@ -104,9 +104,9 @@ function Signin() {
                         onClick={togglePasswordVisibility}
                         className="btn btn-icon">
                     {showPassword ? (
-                    <Eye color='#4A4A4A' size="24"/>
+                    <Eye className="ki-filled ki-eye text-gray-500 "size="18"/>
                     ) : (
-                    <EyeSlash color='#4A4A4A' size="24"/>
+                    <EyeSlash className="ki-filled ki-eye-slash text-gray-500 "size="18"/>
                     )}</button>
                     {showErrors && !isValidPassword && <p className="error-text"> Your password is not valid!</p>}
                 </div>

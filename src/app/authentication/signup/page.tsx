@@ -43,7 +43,7 @@ function Signup() {
 
 
   return (
-    <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg">
+    <div className="flex items-center justify-center h-lvh grow bg-center bg-no-repeat page-bg">
     <div className="card max-w-[370px] w-full">
         <form onSubmit={signupHandler} className="card-body flex flex-col gap-5 p-10" id="sign_in_form" >
             <div className="text-center mb-2.5">
@@ -70,7 +70,7 @@ function Signup() {
                  Email
                 </label>
                 <input 
-                className="input" 
+                className="input"
                 placeholder="email@email.com" 
                 type="text" 
                 value={email}
@@ -84,7 +84,7 @@ function Signup() {
                 <label className="form-label font-normal text-gray-900">
                  Password
                 </label>
-                <div className="input" data-toggle-password="true">
+                <div className="input" >
                     <input 
                     name="user_password" 
                     placeholder="Enter Password" 
@@ -97,9 +97,9 @@ function Signup() {
                         onClick={togglePasswordVisibility}
                         className="btn btn-icon">
                     {showPassword ? (
-                    <Eye color='#4A4A4A' size="24"/>
+                    <Eye className="ki-filled ki-eye text-gray-500 "size="18"/>
                     ) : (
-                    <EyeSlash color='#4A4A4A' size="24"/>
+                    <EyeSlash className="ki-filled ki-eye-slash text-gray-500 "size="18"/>
                     )}</button>
                     {showErrors && !isValidPassword && <p className="error-text"> Your password is not valid!</p>}
                 </div>
@@ -108,7 +108,7 @@ function Signup() {
                 <label className="form-label font-normal text-gray-900">
                     Confirm Password
                 </label>
-                <div className="input" data-toggle-password="true">
+                <div className="input" >
                     <input 
                     name="user_password" 
                     placeholder="Re-enter Password" 
@@ -122,9 +122,9 @@ function Signup() {
                         onClick={togglePasswordVisibility}
                         className="btn btn-icon">
                     {showPassword ? (
-                    <Eye color='#4A4A4A' size="24"/>
+                    <Eye className="ki-filled ki-eye text-gray-500 " size="18"/>
                     ) : (
-                    <EyeSlash color='#4A4A4A' size="24"/>
+                    <EyeSlash className="ki-filled ki-eye-slash text-gray-500 "size="18"/>
                     )}</button>
                     {showErrors && (password !== confirmPassword) && <p className="error-text"> Your password and confirm password are not equal !</p>}
                 </div>

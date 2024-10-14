@@ -1,4 +1,4 @@
-import authRepository from "./repositories/authRepository";
+import authRepository from "./Repositories/authRepository";
 
 interface repositoriesTypeMap {
   auth: any;

@@ -5,9 +5,11 @@ import { useState } from 'react';
 import { validateEmail } from '@/utils/auth';
 import {ArrowRight} from 'iconsax-react';
 
+
 function EnterEmail() {
 
   const [email, setEmail] = useState('');
+  const [showErrors, setShowErrors] = useState(false);
 
   const emailChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
     setEmail(e.currentTarget.value);
@@ -16,11 +18,17 @@ function EnterEmail() {
 
   const enterEmailHandler = async (event:any) => {
         event.preventDefault();
+        setShowErrors(true);
   };
+  if (isValidEmail && !showErrors) {
+    localStorage.setItem('userEmail', email);
+    window.location.href = '/authentication/check-email';
+  }
+
 
 
   return (
-    <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg">
+    <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg h-lvh">
     <div className="card max-w-[370px] w-full">
     <form onSubmit={enterEmailHandler} className="card-body flex flex-col gap-5 p-10" id="reset_password_enter_email_form" method="post">
      <div className="text-center">
@@ -36,18 +44,18 @@ function EnterEmail() {
        Email
       </label>
       <input 
-        className="input" 
+        className="input"  
         placeholder="email@email.com" 
         type="text" 
         value={email}
         onChange={emailChangeHandler}
         required />
-        {!isValidEmail && <p className="error-text"> Your email is not correct!</p>}
+        {showErrors && !isValidEmail && <p className="error-text"> Your email is not correct!</p>}
 
      </div>
      <Link className="btn btn-primary flex justify-center grow" href="/authentication/check-email">
       Contoinue
-      <ArrowRight size="16" color="#000"/>
+      <ArrowRight size="16" color="#fff"/>
      </Link>
     </form>
    </div>
