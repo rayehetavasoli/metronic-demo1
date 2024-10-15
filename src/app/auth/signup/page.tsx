@@ -72,7 +72,7 @@ function Signup() {
                 <input 
                 className="input"
                 placeholder="email@email.com" 
-                type="text" 
+                type="email" 
                 value={email}
                 onChange={emailChangeHandler}
                 required
