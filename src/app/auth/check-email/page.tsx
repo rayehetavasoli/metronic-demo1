@@ -30,7 +30,7 @@ const CheckEmail= () => {
             to reset your password. Thank you.
           </div>
           <div className="flex justify-center mb-5">
-            <Link className="btn btn-primary flex justify-center" href="/authentication/reset-password/">
+            <Link className="btn btn-primary flex justify-center" href="/auth/reset-password/">
               Skip for now
             </Link>
           </div>

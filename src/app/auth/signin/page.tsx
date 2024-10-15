@@ -51,7 +51,7 @@ function Signin() {
                     <span className="text-2sm text-gray-700 me-1.5">
                      Need an account?
                      </span>
-                    <Link className="text-2sm link" href="/authentication/signup">
+                    <Link className="text-2sm link" href="/auth/signup">
                      Sign up
                     </Link>
                 </div>
@@ -87,7 +87,7 @@ function Signin() {
                     <label className="form-label font-normal text-gray-900">
                     Password
                     </label>
-                    <Link className="text-2sm link shrink-0" href="/authentication/enter-email/">
+                    <Link className="text-2sm link shrink-0" href="/auth/enter-email/">
                         Forgot Password?
                     </Link>
                 </div>

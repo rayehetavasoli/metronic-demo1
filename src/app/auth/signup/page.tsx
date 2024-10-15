@@ -54,7 +54,7 @@ function Signup() {
                     <span className="text-2sm text-gray-700 me-1.5">
                      Need an account?
                      </span>
-                    <Link className="text-2sm link" href="/authentication/signin/">
+                    <Link className="text-2sm link" href="/auth/signin/">
                      Sign in
                     </Link>
                 </div>

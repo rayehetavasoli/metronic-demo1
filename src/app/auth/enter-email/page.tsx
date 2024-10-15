@@ -53,7 +53,7 @@ function EnterEmail() {
         {showErrors && !isValidEmail && <p className="error-text"> Your email is not correct!</p>}
 
      </div>
-     <Link className="btn btn-primary flex justify-center grow" href="/authentication/check-email">
+     <Link className="btn btn-primary flex justify-center grow" href="/auth/check-email">
       Contoinue
       <ArrowRight size="16" color="#fff"/>
      </Link>
