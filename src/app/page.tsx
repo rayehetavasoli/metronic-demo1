@@ -1,9 +1,10 @@
 import React from 'react'
 
-function home() {
+
+export default async function Dashboard() {
+
+  
   return (
-    <div>home</div>
+    <div>Dashboard</div>
   )
 }
-
-export default home

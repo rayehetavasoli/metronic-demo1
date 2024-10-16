@@ -2,6 +2,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import './../style.css';
+
 
 const CheckEmail= () => {
   const email = localStorage.getItem('userEmail');

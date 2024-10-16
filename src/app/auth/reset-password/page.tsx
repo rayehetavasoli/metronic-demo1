@@ -1,87 +1,118 @@
 "use client"
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { validatePassword } from '@/utils/auth';
+import './../style.css';
+import { Eye , EyeSlash } from 'iconsax-react';
 
 
+function ResetPassword() {
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [errors, setErrors] = useState({ password: false, confirmPassword: false, general: false });
+    const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
-function resetPassword() {
+    const passwordChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+        setPassword(e.currentTarget.value);
+        setErrors((prev) => ({ ...prev, password: false, general: false }));
+    };
 
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [showErrors, setShowErrors] = useState(false);
+    const confirmPasswordChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+        setConfirmPassword(e.currentTarget.value);
+        setErrors((prev) => ({ ...prev, confirmPassword: false, general: false }));
+    };
 
-  const passwordChangeHandler = (e:React.FormEvent<HTMLInputElement>) => {
-    setPassword(e.currentTarget.value);
-  };
-  const confirmPasswordChangeHandler = (e:React.FormEvent<HTMLInputElement>) => {
-    setConfirmPassword(e.currentTarget.value);
-  };
-  const isValidPassword =validatePassword(password);
-  const resetPasswordHandeler = async (event:any) => {
-    event.preventDefault();
-    setShowErrors(true);
-  }
+    const resetPasswordHandler = async (event: any) => {
+        event.preventDefault();
+        setLoading(true);
 
-  
-  return (
-    <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg h-lvh">
-    <div className="card max-w-[370px] w-full">
-    <form onSubmit={resetPasswordHandeler} className="card-body flex flex-col gap-5 p-10" id="reset_password_change_password_form" method="post">
-     <div className="text-center">
-      <h3 className="text-lg font-medium text-gray-900">
-       Reset Password
-      </h3>
-      <span className="text-2sm text-gray-700">
-       Enter your new password
-      </span>
-     </div>
-     <div className="flex flex-col gap-1">
-      <label className="form-label text-gray-900">
-       New Password
-      </label>
-      <label className="input" >
-      <input 
-        name="user_password" 
-        placeholder="Enter Password" 
-        type="password"
-        value={password}
-        onChange={passwordChangeHandler}
-        required 
-         />       
-        <div className="btn btn-icon" data-toggle-password-trigger="true">
-        <i className="ki-filled ki-eye text-gray-500 toggle-password-active:hidden">
-        </i>
-        <i className="ki-filled ki-eye-slash text-gray-500 hidden toggle-password-active:block">
-        </i>
-       </div>
-      </label>
-      {showErrors && !isValidPassword && <p className="error-text"> Your password is not valid!</p>}
-     </div>
-     <div className="flex flex-col gap-1">
-      <label className="form-label font-normal text-gray-900">
-       Confirm New Password
-      </label>
-      <label className="input">
-      <input 
-        name="user_password" 
-        placeholder="Re-enter Password" 
-        type="password"
-        value={confirmPassword}
-        onChange={confirmPasswordChangeHandler}
-        required 
-         />
-      </label>
-      {showErrors && (password !== confirmPassword) && <p className="error-text"> Your password and confirm password are not equal !</p>}
-     </div>
-     <button className="btn btn-primary flex justify-center grow" >
-      Submit
-     </button>
-    </form>
-   </div>
-   </div>
-  )
+        const isValidPassword = validatePassword(password);
+        const passwordsMatch = password === confirmPassword;
+
+        setErrors({
+            password: !isValidPassword,
+            confirmPassword: !passwordsMatch,
+            general: false,
+        });
+
+        if (isValidPassword && passwordsMatch) {
+          try {
+              // اینجا کد ریست پسورد قرار می‌گیرد
+              // مثلا: await authRepository.resetPassword(password);
+
+              // پیام موفقیت‌آمیز به صورت alert
+              alert('Password has been reset successfully!');
+              setPassword(''); // فرم را پاک می‌کنیم
+              setConfirmPassword('');
+          } catch (error) {
+              setErrors((prev) => ({ ...prev, general: true }));
+          }
+      }
+
+        setLoading(false);
+    };
+
+    return (
+        <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg h-lvh">
+            <div className="card max-w-[370px] w-full">
+                <form onSubmit={resetPasswordHandler} className="card-body flex flex-col gap-5 p-10" id="reset_password_change_password_form">
+                    <div className="text-center">
+                        <h3 className="text-lg font-medium text-gray-900">Reset Password</h3>
+                        <span className="text-2sm text-gray-700">Enter your new password</span>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                        <label className="form-label text-gray-900">New Password</label>
+                        <div className="input">
+                            <input
+                                name="user_password"
+                                placeholder="Enter Password"
+                                type={showPassword ? 'text' : 'password'}
+                                value={password}
+                                onChange={passwordChangeHandler}
+                                required
+                                aria-invalid={errors.password ? "true" : "false"}
+                            />
+                            <button type="button" onClick={togglePasswordVisibility} className="btn btn-icon">
+                            {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
+                    </button>
+                        </div>
+                        {errors.password && <p className="error-text">Your password is not valid!</p>}
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                        <label className="form-label text-gray-900">Confirm New Password</label>
+                        <div className="input">
+                        <input
+                            name="confirm_password"
+                            placeholder="Re-enter Password"
+                            type={showPassword ? 'text' : 'password'}
+                            value={confirmPassword}
+                            onChange={confirmPasswordChangeHandler}
+                            required
+                            aria-invalid={errors.confirmPassword ? "true" : "false"}
+                        />
+                        <button type="button" onClick={togglePasswordVisibility} className="btn btn-icon">
+                            {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
+                    </button>
+                        </div>
+                        {errors.confirmPassword && <p className="error-text">Passwords do not match!</p>}
+                    </div>
+
+                    {errors.general && <p className="error-text">An error occurred during password reset. Please try again.</p>}
+
+                    <button type="submit" className={`btn btn-primary flex justify-center grow ${loading ? 'loading' : ''}`} disabled={loading}>
+                        {loading ? 'Submitting...' : 'Submit'}
+                    </button>
+                </form>
+                
+            </div>
+        </div>
+    );
 }
 
-export default resetPassword
+export default ResetPassword;

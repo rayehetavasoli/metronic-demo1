@@ -4,38 +4,63 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { validateEmail , validatePassword } from '@/utils/auth';
 import { Eye , EyeSlash } from 'iconsax-react';
-//import {RepoFactory} from '@/BaseRepository/Factory';
+import {RepoFactory} from '@/BaseRepository/Factory';
+import './../style.css';
 
 function Signin() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const [showErrors, setShowErrors] = useState(false);
+    const [errors, setErrors] = useState({ email: false, password: false, general: false });
+    const [loading, setLoading] = useState(false);
+
+    const authRepository = RepoFactory.get("auth");
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
-    //const authRepository = RepoFactory.get("auth");
 
-    // change Handeler !!
-    const emailChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+    const emailChangeHandler = (e:React.FormEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value);
-      };
-    const passwordChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+        setErrors((prev) => ({ ...prev, email: false, general: false }));
+    };
+
+    const passwordChangeHandler = (e:React.FormEvent<HTMLInputElement>) => {
         setPassword(e.currentTarget.value);
-      };
+        setErrors((prev) => ({ ...prev, password: false, general: false }));
+    };
 
-      // validation !!
-      const isValidEmail =validateEmail(email);
-      const isValidPassword =validatePassword(password);
-     
-      const signinHandler = async (event:any) => {
+    const signinHandler = async (event:any) => {
         event.preventDefault();
-        setShowErrors(true);
-      }
+        setLoading(true);
+        const isValidEmail = validateEmail(email);
+        const isValidPassword = validatePassword(password);
+        setErrors({
+            email: !isValidEmail,
+            password: !isValidPassword,
+            general: false,
+        });
 
+        if (isValidEmail && isValidPassword) {
+            try {
+                // اینجا کد ورود شما قرار می‌گیرد
+                // به عنوان مثال:
+                await authRepository.signIn(email, password);
+                
+                // اگر ورود موفقیت‌آمیز بود:
+                
+                alert('Password has been reset successfully!');
+                window.location.href = '/dashboard';
+                // به صفحه داشبورد هدایت کنید
+               //Router.push('/dashboard');
+            } catch (error) {
+                setErrors((prev) => ({ ...prev, general: true }));
+            }
+        }
 
+        setLoading(false);
+    };
 
 
 
@@ -74,11 +99,12 @@ function Signin() {
                 <input 
                     className="input"
                     placeholder="email@email.com" 
-                    type="text" 
+                    type="email" 
                     value={email}
                     onChange={emailChangeHandler}
-                    required />
-                    {showErrors && !isValidEmail && <p className="error-text"> Your email is not correct!</p>}
+                    required 
+                    aria-invalid={errors.email ? "true" : "false"}/>
+                   {errors.email && <p className="error-text">Your email is not correct!</p>}
 
             </div>
 
@@ -98,19 +124,15 @@ function Signin() {
                         type={showPassword ? 'text' : 'password'}
                         value={password}
                         onChange={passwordChangeHandler} 
-                        required/>
-                    <button
-                        type="button"
-                        onClick={togglePasswordVisibility}
-                        className="btn btn-icon">
-                    {showPassword ? (
-                    <Eye className="ki-filled ki-eye text-gray-500 "size="18"/>
-                    ) : (
-                    <EyeSlash className="ki-filled ki-eye-slash text-gray-500 "size="18"/>
-                    )}</button>
-                    {showErrors && !isValidPassword && <p className="error-text"> Your password is not valid!</p>}
+                        required
+                        aria-invalid={errors.password ? "true" : "false"}/>
+                    <button type="button" onClick={togglePasswordVisibility} className="btn btn-icon">
+                            {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
+                    </button>
+                    {errors.password && <p className="error-text">Your password is not valid!</p>}
                 </div>
             </div>
+            {errors.general && <p className="error-text">An error occurred during sign-in. Please try again.</p>}
 
             <label className="checkbox-group">
                  <input className="checkbox checkbox-sm" name="check" type="checkbox" value="1"/>
@@ -119,11 +141,12 @@ function Signin() {
                     </span>
             </label>
 
-            <button className="btn btn-primary flex justify-center grow">
-                Sign In
-             </button>
+            <button type="submit" className={`btn btn-primary flex justify-center grow ${loading ? 'loading' : ''}`} disabled={loading}>
+                        {loading ? 'Signing In...' : 'Sign In'}
+            </button>
 
         </form>
+        
     </div>
     </div>
   )
