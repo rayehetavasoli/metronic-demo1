@@ -1,10 +1,10 @@
 import React from 'react'
-import Signin from './auth/signin/page'
 
-function home() {
+
+export default async function Dashboard() {
+
+  
   return (
-    <Signin/>
+    <div>Dashboard</div>
   )
 }
-
-export default home

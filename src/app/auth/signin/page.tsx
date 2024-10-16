@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { validateEmail , validatePassword } from '@/utils/auth';
 import { Eye , EyeSlash } from 'iconsax-react';
 import {RepoFactory} from '@/BaseRepository/Factory';
+import './../style.css';
 
 function Signin() {
 
@@ -13,7 +14,6 @@ function Signin() {
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState({ email: false, password: false, general: false });
     const [loading, setLoading] = useState(false);
-    const [success, setSuccess] = useState(false);
 
     const authRepository = RepoFactory.get("auth");
 
@@ -49,7 +49,9 @@ function Signin() {
                 await authRepository.signIn(email, password);
                 
                 // اگر ورود موفقیت‌آمیز بود:
-                setSuccess(true);
+                
+                alert('Password has been reset successfully!');
+                window.location.href = '/dashboard';
                 // به صفحه داشبورد هدایت کنید
                //Router.push('/dashboard');
             } catch (error) {
@@ -144,7 +146,7 @@ function Signin() {
             </button>
 
         </form>
-        {success && <p className="success-text">Successfully signed in!</p>}
+        
     </div>
     </div>
   )
