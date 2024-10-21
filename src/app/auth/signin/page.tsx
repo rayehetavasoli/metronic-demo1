@@ -129,8 +129,9 @@ function Signin() {
                     <button type="button" onClick={togglePasswordVisibility} className="btn btn-icon">
                             {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
                     </button>
-                    {errors.password && <p className="error-text">Your password is not valid!</p>}
+                    
                 </div>
+                {errors.password && <p className="error-text">Your password is not valid!</p>}
             </div>
             {errors.general && <p className="error-text">An error occurred during sign-in. Please try again.</p>}
 

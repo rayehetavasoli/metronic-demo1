@@ -56,13 +56,10 @@ function Signup() {
 
         if (isValidEmail && isValidPassword && passwordsMatch) {
             try {
-                // اینجا کد ثبت‌نام شما قرار می‌گیرد
                 await authRepository.signUp(email, password);
 
-                // موفقیت‌آمیز بود:
                 alert('Password has been reset successfully!');
-                // هدایت به صفحه دیگری مثلاً داشبورد
-                window.location.href = '/auth/signin';
+                window.location.href ='/auth/signin';
             } catch (error) {
                 setErrors((prev) => ({ ...prev, general: true }));
             }
@@ -94,8 +91,9 @@ function Signup() {
                             required
                             aria-invalid={errors.email ? "true" : "false"}
                         />
-                        {errors.email && <p className="error-text">Your email is not correct!</p>}
+                       
                     </div>
+                    {errors.email && <p className="error-text">Your email is not correct!</p>}
 
                     <div className="flex flex-col gap-1">
                         <label className="form-label font-normal text-gray-900">Password</label>
@@ -112,8 +110,9 @@ function Signup() {
                             <button type="button" onClick={togglePasswordVisibility} className="btn btn-icon">
                                 {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
                             </button>
-                            {errors.password && <p className="error-text">Your password is not valid!</p>}
+                            
                         </div>
+                        {errors.password && <p className="error-text">Your password is not valid!</p>}
                     </div>
 
                     <div className="flex flex-col gap-1">
@@ -131,8 +130,9 @@ function Signup() {
                              <button type="button" onClick={togglePasswordVisibility} className="btn btn-icon">
                                 {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
                             </button>
-                            {errors.confirmPassword && <p className="error-text">Passwords do not match!</p>}
+                            
                         </div>
+                        {errors.confirmPassword && <p className="error-text">Passwords do not match!</p>}
                     </div>
 
                     {errors.general && <p className="error-text">An error occurred during sign-up. Please try again.</p>}

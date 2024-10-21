@@ -8,16 +8,16 @@ interface User {
   date: Date;
 }
 
-
 interface UserTableProps {
-  data: User[]; 
+  data: User[];
 }
+
 const users: User[] = [
-  { name: 'علی', family: 'امینی', email: 'ali.amini@gmail.com', date: 1403/2/11 },
-  { name: 'مهدی', family: 'سهرابی', email: 'mehdi.sohrabi@gmail.com', date: 1403/5/23 },
-  { name: 'پیام', family: 'محمدی', email: 'payam.mohamadi@gmail.com', date: 1402/9/7},
-  { name: 'فاطمه', family: 'عباسی', email: 'fateme.abasi@gmail.com', date: 1402/2/30 },
-  { name: 'تینا', family: 'متین', email: 'tina.matin@gmail.com', date: 1402/12/11 },
+  { name: 'علی', family: 'امینی', email: 'ali.amini@gmail.com', date: new Date('2024-04-30') },
+  { name: 'مهدی', family: 'سهرابی', email: 'mehdi.sohrabi@gmail.com', date: new Date('2024-08-13') },
+  { name: 'پیام', family: 'محمدی', email: 'payam.mohamadi@gmail.com', date: new Date('2023-11-28') },
+  { name: 'فاطمه', family: 'عباسی', email: 'fateme.abasi@gmail.com', date: new Date('2023-04-19') },
+  { name: 'تینا', family: 'متین', email: 'tina.matin@gmail.com', date: new Date('2024-03-01') },
 ];
 
 const Table: FC<UserTableProps> = ({ data }) => (
@@ -32,24 +32,27 @@ const Table: FC<UserTableProps> = ({ data }) => (
       </tr>
     </thead>
     <tbody>
-        {data?.map((user, index) => (
+      {data.length > 0 ? (
+        data.map((user, index) => (
           <tr key={index} className="odd:bg-gray-50 even:bg-white gap-3">
             <td className="p-3 text-center">{user.name}</td>
             <td className="p-3 text-center">{user.family}</td>
             <td className="p-3 text-center">{user.email}</td>
-            <td className="p-3 text-center">{user.date}</td>
-            <td className="p-3 flex  justify-center items-center gap-4">
+            <td className="p-3 text-center">{user.date.toLocaleDateString('fa-IR')}</td>
+            <td className="p-3 flex justify-center items-center gap-4">
               <ActionButtons />
             </td>
           </tr>
         ))
-      ||
+      ) : (
         <tr>
-          <td colSpan={5} className="p-3 text-center">هیچ داده‌ای موجود نیست</td>
+          <td colSpan={5} className="p-3 text-center">
+            هیچ داده‌ای موجود نیست
+          </td>
         </tr>
-      }
+      )}
     </tbody>
   </table>
 );
 
-export { Table , users };
+export { Table, users };

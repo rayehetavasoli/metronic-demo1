@@ -26,7 +26,7 @@ interface Brand {
   
 const BrandTable: FC<BrandTableProps> = ({ data }) => {
   return (
-    <div className="p-8 bg-gray-50 rounded-3xl shadow-lg w-full mx-20 ">
+    <div className="px-10 py-8 bg-gray-50 rounded-3xl shadow-lg w-full mx-20 ">
       <HeaderSection />
       <Table data={data} />
       <Footer />
