@@ -22,7 +22,6 @@ function Signup() {
         setShowPassword(!showPassword);
     };
 
-    // تغییرات ورودی‌ها
     const emailChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value);
         setErrors((prev) => ({ ...prev, email: false, general: false }));
@@ -38,7 +37,6 @@ function Signup() {
         setErrors((prev) => ({ ...prev, confirmPassword: false, general: false }));
     };
 
-    // هندلر ثبت‌نام
     const signupHandler = async (event: any) => {
         event.preventDefault();
         setLoading(true);
@@ -138,7 +136,7 @@ function Signup() {
                     {errors.general && <p className="error-text">An error occurred during sign-up. Please try again.</p>}
 
                     <label className="checkbox-group">
-                        <input className="checkbox checkbox-sm" name="check" type="checkbox" value="1" />
+                        <input className="checkbox checkbox-sm" name="check" type="checkbox" value="1" required/>
                         <span className="checkbox-label">I accept <Link className="text-2sm link" href="#">Terms & Conditions</Link></span>
                     </label>
 

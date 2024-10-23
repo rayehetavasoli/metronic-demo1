@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { validatePassword } from '@/utils/auth';
 import './../style.css';
 import { Eye , EyeSlash } from 'iconsax-react';
+import {RepoFactory} from '@/BaseRepository/Factory';
+
 
 
 function ResetPassword() {
@@ -11,6 +13,8 @@ function ResetPassword() {
     const [errors, setErrors] = useState({ password: false, confirmPassword: false, general: false });
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+
+    const authRepository = RepoFactory.get("auth");
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -41,12 +45,11 @@ function ResetPassword() {
 
         if (isValidPassword && passwordsMatch) {
           try {
-              // اینجا کد ریست پسورد قرار می‌گیرد
-              // مثلا: await authRepository.resetPassword(password);
+              await authRepository.resetPassword(password);
 
-              // پیام موفقیت‌آمیز به صورت alert
               alert('Password has been reset successfully!');
-              setPassword(''); // فرم را پاک می‌کنیم
+              window.location.href ='/auth/signin';
+              setPassword('');
               setConfirmPassword('');
           } catch (error) {
               setErrors((prev) => ({ ...prev, general: true }));

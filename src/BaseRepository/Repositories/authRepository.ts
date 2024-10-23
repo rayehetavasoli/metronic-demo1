@@ -15,5 +15,8 @@ const authRepository = {
       `${resource}?email=${body.email}&&password=${body.password}`
     );
   },
+  ResetPassword(password: string) {
+    return BaseRepository.put(`${resource}`, password);
+  },
 };
 export default authRepository;

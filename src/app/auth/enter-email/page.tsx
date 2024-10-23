@@ -9,13 +9,11 @@ function EnterEmail() {
     const [errors, setErrors] = useState({ email: false, general: false });
     const [loading, setLoading] = useState(false);
 
-    // تغییر ایمیل و پاک کردن خطاهای قبلی
     const emailChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value);
         setErrors((prev) => ({ ...prev, email: false, general: false }));
     };
 
-    // هندلر ارسال فرم ایمیل
     const enterEmailHandler = async (event: any) => {
         event.preventDefault();
         setLoading(true);
@@ -29,10 +27,8 @@ function EnterEmail() {
 
         if (isValidEmail) {
             try {
-                // ذخیره ایمیل و هدایت به صفحه بعد
                 localStorage.setItem('userEmail', email);
                 alert('Email successfully sent! Please check your inbox.');
-                // هدایت به صفحه بعد
                 window.location.href = '/auth/check-email';
             } catch (error) {
                 setErrors((prev) => ({ ...prev, general: true }));

@@ -44,16 +44,10 @@ function Signin() {
 
         if (isValidEmail && isValidPassword) {
             try {
-                // اینجا کد ورود شما قرار می‌گیرد
-                // به عنوان مثال:
                 await authRepository.signIn(email, password);
-                
-                // اگر ورود موفقیت‌آمیز بود:
                 
                 alert('Password has been reset successfully!');
                 window.location.href = '/dashboard';
-                // به صفحه داشبورد هدایت کنید
-               //Router.push('/dashboard');
             } catch (error) {
                 setErrors((prev) => ({ ...prev, general: true }));
             }
@@ -65,8 +59,8 @@ function Signin() {
 
 
   return (
-    <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg h-lvh">
-    <div className="card max-w-[370px] w-full">
+     <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg h-lvh">
+      <div className="card max-w-[370px] w-full">
         <form onSubmit={signinHandler} className="card-body flex flex-col gap-5 p-10" id="sign_in_form">
             <div className="text-center mb-2.5">
                 <h3 className="text-lg font-medium text-gray-900 leading-none mb-2.5">
@@ -148,9 +142,10 @@ function Signin() {
 
         </form>
         
-    </div>
+        </div>
     </div>
   )
 }
+
 
 export default Signin;
