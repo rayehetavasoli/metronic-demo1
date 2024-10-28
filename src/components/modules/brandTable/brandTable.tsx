@@ -1,25 +1,10 @@
 import { FC } from 'react';
 import ActionButtons from './actionButtons';
+import {brands} from '@/db/main';
+import { BrandTableProps } from '@/types';
 
-interface Brand {
-  name: string;
-  founded: number;
-  country: string;
-  industry: string;
-}
 
-interface BrandTableProps {
-  data: Brand[]; 
-}
-const brands: Brand[] = [
-  { name: 'مرسدس بنز', founded: 1926, country: 'آلمان', industry: 'وسایل نقلیه' },
-  { name: 'ایسوس', founded: 1989, country: 'تایوان', industry: 'سخت‌افزار رایانه' },
-  { name: 'تویوتا', founded: 1937, country: 'ژاپن', industry: 'وسایل نقلیه' },
-  { name: 'اپل', founded: 1976, country: 'ایالات متحده آمریکا', industry: 'سخت‌افزار رایانه' },
-  { name: 'بوش', founded: 1886, country: 'آلمان', industry: 'لوازم برقی' },
-];
-
-const Table: FC<BrandTableProps> = ({ data }) => (
+const Table: FC<BrandTableProps> = ({ data, onEdit, onDelete }) => (
   <table className="min-w-full bg-white rounded-[28px] shadow-lg text-right" dir="rtl">
     <thead className="bg-gray-100">
       <tr>
@@ -31,24 +16,31 @@ const Table: FC<BrandTableProps> = ({ data }) => (
       </tr>
     </thead>
     <tbody>
-        {data?.map((brand, index) => (
-          <tr key={index} className="odd:bg-gray-50 even:bg-white gap-3">
-            <td className="p-3 text-center">{brand.name}</td>
+      {data.length > 0 ? (
+        data.map((brand) => (
+          <tr key={brand.id} className="odd:bg-gray-50 even:bg-white">
+            <td className="p-3 text-center">{brand.brandName}</td>
             <td className="p-3 text-center">{brand.founded}</td>
             <td className="p-3 text-center">{brand.country}</td>
             <td className="p-3 text-center">{brand.industry}</td>
-            <td className="p-3 flex  justify-center items-center gap-4">
-              <ActionButtons />
+            <td className="p-3 flex justify-center items-center gap-4">
+              <ActionButtons 
+                onEdit={() => onEdit(brand)} 
+                onDelete={() => onDelete(brand)} 
+              />
             </td>
           </tr>
         ))
-      ||
+      ) : (
         <tr>
-          <td colSpan={5} className="p-3 text-center">هیچ داده‌ای موجود نیست</td>
+          <td colSpan={5} className="p-3 text-center">
+            هیچ داده‌ای موجود نیست
+          </td>
         </tr>
-      }
+      )}
     </tbody>
   </table>
 );
 
-export { Table , brands };
+export { Table };
+

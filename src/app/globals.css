@@ -1,11 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @font-face {
   font-family: "persian-number";
-  src: url("../assets/fonts/Vazir.ttf");
+  src: url("../assets/fonts/IRANSans-web.woff");
 }
-/*! tailwindcss v3.4.11 | MIT License | https://tailwindcss.com*/
+
 *,:after,:before {
   box-sizing: border-box;
   border-width: 0;
@@ -23,7 +24,6 @@
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
-  font-family: Inter,system-ui,sans-serif;
   font-feature-settings: normal;
   font-variation-settings: normal;
   -webkit-tap-highlight-color: transparent

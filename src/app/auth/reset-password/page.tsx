@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { validatePassword } from '@/utils/auth';
 import './../style.css';
 import { Eye , EyeSlash } from 'iconsax-react';
+import {RepoFactory} from '@/BaseRepository/Factory';
 
 
 function ResetPassword() {
@@ -11,6 +12,8 @@ function ResetPassword() {
     const [errors, setErrors] = useState({ password: false, confirmPassword: false, general: false });
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+
+    const authRepository = RepoFactory.get("auth");
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -41,12 +44,11 @@ function ResetPassword() {
 
         if (isValidPassword && passwordsMatch) {
           try {
-              // اینجا کد ریست پسورد قرار می‌گیرد
-              // مثلا: await authRepository.resetPassword(password);
+              await authRepository.resetPassword(password);
 
-              // پیام موفقیت‌آمیز به صورت alert
-              alert('Password has been reset successfully!');
-              setPassword(''); // فرم را پاک می‌کنیم
+              alert('رمز عبورتان با موفقیت تغییر یافت!');
+              window.location.href ='/auth/signin';
+              setPassword('');
               setConfirmPassword('');
           } catch (error) {
               setErrors((prev) => ({ ...prev, general: true }));
@@ -57,39 +59,41 @@ function ResetPassword() {
     };
 
     return (
-        <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg h-lvh">
+        <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg h-lvh" dir='rtl'>
             <div className="card max-w-[370px] w-full">
                 <form onSubmit={resetPasswordHandler} className="card-body flex flex-col gap-5 p-10" id="reset_password_change_password_form">
                     <div className="text-center">
-                        <h3 className="text-lg font-medium text-gray-900">Reset Password</h3>
-                        <span className="text-2sm text-gray-700">Enter your new password</span>
+                        <h3 className="text-lg font-medium text-gray-900">بازیابی رمز عبور</h3>
+                        <span className="text-2sm text-gray-700">رمز عبور جدید را وارد کنید</span>
                     </div>
 
                     <div className="flex flex-col gap-1">
-                        <label className="form-label text-gray-900">New Password</label>
+                        <label className="form-label text-gray-900">رمز عبور جدید</label>
                         <div className="input">
+                           
                             <input
                                 name="user_password"
-                                placeholder="Enter Password"
+                                placeholder="رمز عبور را وارد کنید"
                                 type={showPassword ? 'text' : 'password'}
                                 value={password}
                                 onChange={passwordChangeHandler}
                                 required
                                 aria-invalid={errors.password ? "true" : "false"}
                             />
-                            <button type="button" onClick={togglePasswordVisibility} className="btn btn-icon">
-                            {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
-                    </button>
+                             <button type="button" onClick={togglePasswordVisibility} className="btn btn-icon">
+                                {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
+                            </button>
                         </div>
-                        {errors.password && <p className="error-text">Your password is not valid!</p>}
+                        {errors.password && <p className="error-text">رمز عبور وارد شده معتبر نمی باشد!</p>}
                     </div>
 
                     <div className="flex flex-col gap-1">
-                        <label className="form-label text-gray-900">Confirm New Password</label>
+                        <label className="form-label text-gray-900">تکرار رمز عبور</label>
                         <div className="input">
+                            
                         <input
                             name="confirm_password"
-                            placeholder="Re-enter Password"
+                            placeholder="مجددا رمز عبور را وارد کنید"
                             type={showPassword ? 'text' : 'password'}
                             value={confirmPassword}
                             onChange={confirmPasswordChangeHandler}
@@ -97,16 +101,16 @@ function ResetPassword() {
                             aria-invalid={errors.confirmPassword ? "true" : "false"}
                         />
                         <button type="button" onClick={togglePasswordVisibility} className="btn btn-icon">
-                            {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
-                    </button>
+                                {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
+                            </button>
                         </div>
-                        {errors.confirmPassword && <p className="error-text">Passwords do not match!</p>}
+                        {errors.confirmPassword && <p className="error-text">رمز های وارد شده با هم مطابقت ندارد!</p>}
                     </div>
 
-                    {errors.general && <p className="error-text">An error occurred during password reset. Please try again.</p>}
+                    {errors.general && <p className="error-text"> یک مشکل در تغییر رمز عبور پیش آمده است. لطفا دوباره تلاش کنید!</p>}
 
                     <button type="submit" className={`btn btn-primary flex justify-center grow ${loading ? 'loading' : ''}`} disabled={loading}>
-                        {loading ? 'Submitting...' : 'Submit'}
+                        {loading ? 'درحال ثبت کردن...' : 'ثبت'}
                     </button>
                 </form>
                 

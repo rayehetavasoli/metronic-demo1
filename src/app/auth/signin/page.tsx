@@ -44,16 +44,10 @@ function Signin() {
 
         if (isValidEmail && isValidPassword) {
             try {
-                // اینجا کد ورود شما قرار می‌گیرد
-                // به عنوان مثال:
                 await authRepository.signIn(email, password);
                 
-                // اگر ورود موفقیت‌آمیز بود:
-                
-                alert('Password has been reset successfully!');
+                alert(' خوش آمدید!');
                 window.location.href = '/dashboard';
-                // به صفحه داشبورد هدایت کنید
-               //Router.push('/dashboard');
             } catch (error) {
                 setErrors((prev) => ({ ...prev, general: true }));
             }
@@ -65,36 +59,25 @@ function Signin() {
 
 
   return (
-    <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg h-lvh">
-    <div className="card max-w-[370px] w-full">
-        <form onSubmit={signinHandler} className="card-body flex flex-col gap-5 p-10" id="sign_in_form">
+     <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg h-lvh" dir='rtl'>
+      <div className="card max-w-[370px] w-full">
+        <form onSubmit={signinHandler} className="card-body flex flex-col gap-5 p-10">
             <div className="text-center mb-2.5">
                 <h3 className="text-lg font-medium text-gray-900 leading-none mb-2.5">
-                    Sign in
+                    ورود
                 </h3>
                 <div className="flex items-center justify-center font-medium">
                     <span className="text-2sm text-gray-700 me-1.5">
-                     Need an account?
+                     نیاز به حساب کابری دارید؟
                      </span>
                     <Link className="text-2sm link" href="/auth/signup">
-                     Sign up
+                     ثبت نام
                     </Link>
                 </div>
             </div>
-
-            <div className="flex items-center gap-2">
-                <span className="border-t border-gray-200 w-full">
-                </span>
-                <span className="text-2xs text-gray-500 font-medium uppercase">
-                    Or
-                </span>
-                <span className="border-t border-gray-200 w-full">
-                </span>
-            </div>
-
             <div className="flex flex-col gap-1">
                 <label className="form-label font-normal text-gray-900">
-                 Email
+                 ایمیل
                 </label>
                 <input 
                     className="input"
@@ -104,53 +87,55 @@ function Signin() {
                     onChange={emailChangeHandler}
                     required 
                     aria-invalid={errors.email ? "true" : "false"}/>
-                   {errors.email && <p className="error-text">Your email is not correct!</p>}
+                   {errors.email && <p className="error-text">ایمیل وارد شده صحیح نمی باشد!</p>}
 
             </div>
 
             <div className="flex flex-col gap-1">
                 <div className="flex items-center justify-between gap-1">
                     <label className="form-label font-normal text-gray-900">
-                    Password
+                    رمز عبور
                     </label>
                     <Link className="text-2sm link shrink-0" href="/auth/enter-email/">
-                        Forgot Password?
+                        فراموشی رمز عبور ؟
                     </Link>
                 </div>
-                <div className="input" >
+                <div className="input" > 
+                    <button type="button" onClick={togglePasswordVisibility} className="btn btn-icon">
+                            {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
+                    </button>
                     <input 
                         name="user_password" 
-                        placeholder="Enter Password" 
+                        placeholder="رمز عبور را وارد کنید" 
                         type={showPassword ? 'text' : 'password'}
                         value={password}
                         onChange={passwordChangeHandler} 
                         required
                         aria-invalid={errors.password ? "true" : "false"}/>
-                    <button type="button" onClick={togglePasswordVisibility} className="btn btn-icon">
-                            {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
-                    </button>
+                   
                     
                 </div>
-                {errors.password && <p className="error-text">Your password is not valid!</p>}
+                {errors.password && <p className="error-text">رمز عبور وارد شده معتبر نمی باشد!</p>}
             </div>
-            {errors.general && <p className="error-text">An error occurred during sign-in. Please try again.</p>}
+            {errors.general && <p className="error-text">مشکلی در ورود پیش آمده است. لطفا دوباره تلاش کنید!</p>}
 
             <label className="checkbox-group">
                  <input className="checkbox checkbox-sm" name="check" type="checkbox" value="1"/>
                     <span className="checkbox-label">
-                      Remember me
+                     مرا به خاطر بسپار
                     </span>
             </label>
 
             <button type="submit" className={`btn btn-primary flex justify-center grow ${loading ? 'loading' : ''}`} disabled={loading}>
-                        {loading ? 'Signing In...' : 'Sign In'}
+                        {loading ? 'ورود... ': 'ورود'}
             </button>
 
         </form>
         
-    </div>
+        </div>
     </div>
   )
 }
+
 
 export default Signin;

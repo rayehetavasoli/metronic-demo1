@@ -22,7 +22,6 @@ function Signup() {
         setShowPassword(!showPassword);
     };
 
-    // تغییرات ورودی‌ها
     const emailChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value);
         setErrors((prev) => ({ ...prev, email: false, general: false }));
@@ -38,7 +37,6 @@ function Signup() {
         setErrors((prev) => ({ ...prev, confirmPassword: false, general: false }));
     };
 
-    // هندلر ثبت‌نام
     const signupHandler = async (event: any) => {
         event.preventDefault();
         setLoading(true);
@@ -56,11 +54,11 @@ function Signup() {
 
         if (isValidEmail && isValidPassword && passwordsMatch) {
             try {
-                await authRepository.signUp(email, password);
-
-                alert('Password has been reset successfully!');
-                window.location.href ='/auth/signin';
+                await authRepository.Signup({ email, password }); 
+                alert('Signup successful!');
+                window.location.href = '/auth/signin';
             } catch (error) {
+                console.error(error); 
                 setErrors((prev) => ({ ...prev, general: true }));
             }
         }
@@ -69,22 +67,22 @@ function Signup() {
     };
 
     return (
-        <div className="flex items-center justify-center h-lvh grow bg-center bg-no-repeat page-bg">
+        <div className="flex items-center justify-center h-lvh grow bg-center bg-no-repeat page-bg" dir='rtl'>
             <div className="card max-w-[370px] w-full">
                 <form onSubmit={signupHandler} className="card-body flex flex-col gap-5 p-10" id="sign_up_form">
                     <div className="text-center mb-2.5">
-                        <h3 className="text-lg font-medium text-gray-900 leading-none mb-2.5">Sign up</h3>
+                        <h3 className="text-xl font-semibold text-gray-900 leading-none mb-2.5">ثبت نام</h3>
                         <div className="flex items-center justify-center font-medium">
-                            <span className="text-2sm text-gray-700 me-1.5">Already have an account?</span>
-                            <Link className="text-2sm link" href="/auth/signin/">Sign in</Link>
+                            <span className="text-md text-gray-700 me-1.5">آیا حساب کاربری دارید؟</span>
+                            <Link className="text-md link" href="/auth/signin/">ورود</Link>
                         </div>
                     </div>
 
                     <div className="flex flex-col gap-1">
-                        <label className="form-label font-normal text-gray-900">Email</label>
+                        <label className="form-label font-medium text-gray-900">ایمیل</label>
                         <input
                             className="input"
-                            placeholder="email@email.com"
+                            placeholder="ایمیل را وارد کنید"
                             type="email"
                             value={email}
                             onChange={emailChangeHandler}
@@ -93,57 +91,59 @@ function Signup() {
                         />
                        
                     </div>
-                    {errors.email && <p className="error-text">Your email is not correct!</p>}
+                    {errors.email && <p className="error-text">ایمیل وارد شده صحیح نمی باشد!</p>}
 
                     <div className="flex flex-col gap-1">
-                        <label className="form-label font-normal text-gray-900">Password</label>
+                        <label className="form-label font-medium text-gray-900">رمز عبور</label>
                         <div className="input">
+                            <button type="button" onClick={togglePasswordVisibility} className="btn btn-icon">
+                                {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
+                            </button>
                             <input
                                 name="user_password"
-                                placeholder="Enter Password"
+                                placeholder="رمز عبور را وارد کنید"
                                 type={showPassword ? 'text' : 'password'}
                                 value={password}
                                 onChange={passwordChangeHandler}
                                 required
                                 aria-invalid={errors.password ? "true" : "false"}
                             />
-                            <button type="button" onClick={togglePasswordVisibility} className="btn btn-icon">
-                                {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
-                            </button>
+                          
                             
                         </div>
-                        {errors.password && <p className="error-text">Your password is not valid!</p>}
+                        {errors.password && <p className="error-text">رمز عبور وارد شده باید شامل حروف کوچک و بزرگ ، اعداد و کارکتر باشد!</p>}
                     </div>
 
                     <div className="flex flex-col gap-1">
-                        <label className="form-label font-normal text-gray-900">Confirm Password</label>
+                        <label className="form-label font-medium text-gray-900">تکرار رمز عبور</label>
                         <div className="input">
+                            <button type="button" onClick={togglePasswordVisibility} className="btn btn-icon">
+                                {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
+                            </button>
                             <input
                                 name="confirm_password"
-                                placeholder="Re-enter Password"
+                                placeholder="مجددا رمز عبور را وارد کنید"
                                 type={showPassword ? 'text' : 'password'}
                                 value={confirmPassword}
                                 onChange={confirmPasswordChangeHandler}
                                 required
                                 aria-invalid={errors.confirmPassword ? "true" : "false"}
                             />
-                             <button type="button" onClick={togglePasswordVisibility} className="btn btn-icon">
-                                {showPassword ? <Eye className="ki-filled ki-eye text-gray-500" size="18" /> : <EyeSlash className="ki-filled ki-eye-slash text-gray-500" size="18" />}
-                            </button>
+                             
                             
                         </div>
-                        {errors.confirmPassword && <p className="error-text">Passwords do not match!</p>}
+                        {errors.confirmPassword && <p className="error-text">رمز عبور های وارد شده باهم مطابقت ندارند!</p>}
                     </div>
 
-                    {errors.general && <p className="error-text">An error occurred during sign-up. Please try again.</p>}
+                    {errors.general && <p className="error-text">در ثبت نام شما مشکلی پیش آمده است. لطفا دوباره تلاش کنید!</p>}
 
                     <label className="checkbox-group">
-                        <input className="checkbox checkbox-sm" name="check" type="checkbox" value="1" />
-                        <span className="checkbox-label">I accept <Link className="text-2sm link" href="#">Terms & Conditions</Link></span>
+                        <input className="checkbox checkbox-sm" name="check" type="checkbox" value="1" required/>
+                        <span className="checkbox-label"><Link className="text-2sm link" href="#">شرایط و قوانین</Link> را می پذیرم.</span>
                     </label>
 
                     <button type="submit" className={`btn btn-primary flex justify-center grow ${loading ? 'loading' : ''}`} disabled={loading}>
-                        {loading ? 'Signing Up...' : 'Sign Up'}
+                        {loading ? 'درحال ثبت نام ...' : 'ثبت نام'}
                     </button>
 
                 </form>
