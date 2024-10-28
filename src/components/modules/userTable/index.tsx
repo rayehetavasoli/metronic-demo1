@@ -1,38 +1,63 @@
+'use client';
+import React, { FC, useState } from 'react';
 import HeaderSection from './headerSection';
 import Footer from './footer';
 import { Table } from './userTable';
-import { FC } from 'react';
-
-interface User {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  date: Date;
-}
-
-interface UserTableProps {
-  data: User[];
-}
-
-const User: User[] = [
-  { id: 1, firstName: 'علی', lastName: 'امینی', email: 'ali.amini@gmail.com', date: new Date('2024-04-30') },
-  { id: 2, firstName: 'مهدی', lastName: 'سهرابی', email: 'mehdi.sohrabi@gmail.com', date: new Date('2024-08-13') },
-  { id: 3, firstName: 'پیام', lastName: 'محمدی', email: 'payam.mohamadi@gmail.com', date: new Date('2023-11-28') },
-  { id: 4, firstName: 'فاطمه', lastName: 'عباسی', email: 'fateme.abasi@gmail.com', date: new Date('2023-04-19') },
-  { id: 5, firstName: 'تینا', lastName: 'متین', email: 'tina.matin@gmail.com', date: new Date('2024-03-01') },
-];
-
+import EditUser from './editUser';
+import DeleteUser from './deleteUser';
+import { User, UserTableProps } from '@/types';
 
 const UserTable: FC<UserTableProps> = ({ data }) => {
+  const [users, setUsers] = useState<User[]>(data);
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  const [modalType, setModalType] = useState<'edit' | 'delete' | null>(null);
+
+  const handleAddUser = (newUser: User) => {
+    setUsers([...users, newUser]);
+  };
+
+  const handleEditUser = (user: User) => {
+    setSelectedUser(user);
+    setModalType('edit');
+  };
+
+  const handleDeleteUser = (user: User) => {
+    setSelectedUser(user);
+    setModalType('delete');
+  };
+
+  const confirmDelete = () => {
+    if (selectedUser) {
+      setUsers(users.filter((user) => user.id !== selectedUser.id));
+      closeModal();
+    }
+  };
+
+  const updateUser = (updatedUser: User) => {
+    setUsers(users.map((user) => (user.id === updatedUser.id ? updatedUser : user)));
+    closeModal();
+  };
+
+  const closeModal = () => {
+    setSelectedUser(null);
+    setModalType(null);
+  };
+
   return (
     <div className="px-10 py-8 bg-gray-50 rounded-3xl shadow-lg w-full mx-20">
-      <HeaderSection />
-      <Table data={data} />
+      <HeaderSection onAddUser={handleAddUser} />
+      <Table data={users} onEdit={handleEditUser} onDelete={handleDeleteUser} />
+
+      {modalType === 'edit' && selectedUser && (
+        <EditUser user={selectedUser} onClose={closeModal} onUpdate={updateUser} />
+      )}
+
+      {modalType === 'delete' && selectedUser && (
+        <DeleteUser user={selectedUser} onCancel={closeModal} onDelete={confirmDelete} />
+      )}
       <Footer />
     </div>
   );
 };
-
 
 export { UserTable };

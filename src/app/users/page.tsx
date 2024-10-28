@@ -1,6 +1,6 @@
 import React from 'react'
 import {UserTable} from '@/components/modules/userTable/index'
-import {users} from '@/components/modules/userTable/userTable'
+import {users} from '@/db/main'
 
 function Users() {
   return (

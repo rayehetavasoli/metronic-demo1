@@ -7,7 +7,7 @@ import Footer from '@/components/modules/footer'
 
 
 
-const mainFont = localFont({ src: "../assets/fonts/Vazir.ttf" });
+const mainFont = localFont({ src: "../assets/fonts/IRANSans-web.woff"});
 
 
 export const metadata: Metadata = {
@@ -26,9 +26,9 @@ export default function RootLayout({
         className={`${mainFont.style.fontFamily}`}
       >
          <div className="size-full justify-center items-start inline-flex">
-      <div className="grow shrink basis-0 h-lvh bg-[#efefef] flex-col justify-between items-center inline-flex">
+      <div className="grow shrink basis-0 h-lvh bg-[#f5f5f5] dark:bg-[#181818] flex-col justify-between items-center inline-flex">
         <Header/>
-        <div className="px-20 py-15 justify-center items-center inline-flex size-full" >{children}</div>
+        <div className="px-20 py-15 justify-center items-center inline-flex size-full " >{children}</div>
         <Footer/>
       </div>
       <Sidebar/>
