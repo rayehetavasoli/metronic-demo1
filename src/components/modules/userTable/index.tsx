@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useMemo } from 'react';
 import HeaderSection from './headerSection';
 import Footer from './footer';
 import { Table } from './userTable';
@@ -9,11 +9,32 @@ import { User, UserTableProps } from '@/types';
 
 const UserTable: FC<UserTableProps> = ({ data }) => {
   const [users, setUsers] = useState<User[]>(data);
+  const [filteredUsers, setFilteredUsers] = useState<User[]>(data); 
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [modalType, setModalType] = useState<'edit' | 'delete' | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
 
-  const handleAddUser = (newUser: User) => {
-    setUsers([...users, newUser]);
+  const totalPages = useMemo(() => Math.ceil(filteredUsers.length / pageSize), [filteredUsers.length, pageSize]);
+
+  const currentUsers = useMemo(() => {
+    const startIndex = (currentPage - 1) * pageSize;
+    return filteredUsers.slice(startIndex, startIndex + pageSize);
+  }, [filteredUsers, currentPage, pageSize]);
+
+  const updateUsersState = (updatedUsers: User[]) => {
+    setUsers(updatedUsers);
+    setFilteredUsers(updatedUsers);
+  };
+
+  const handleAddUser = (newUser: User) => updateUsersState([...users, newUser]);
+
+  const handleSearch = (query: string) => {
+    const lowerQuery = query.toLowerCase();
+    const filtered = users.filter(({ firstName, lastName, email }) =>
+      `${firstName} ${lastName} ${email}`.toLowerCase().includes(lowerQuery)
+    );
+    setFilteredUsers(filtered);
   };
 
   const handleEditUser = (user: User) => {
@@ -28,13 +49,14 @@ const UserTable: FC<UserTableProps> = ({ data }) => {
 
   const confirmDelete = () => {
     if (selectedUser) {
-      setUsers(users.filter((user) => user.id !== selectedUser.id));
+      updateUsersState(users.filter(user => user.id !== selectedUser.id));
       closeModal();
     }
   };
 
   const updateUser = (updatedUser: User) => {
-    setUsers(users.map((user) => (user.id === updatedUser.id ? updatedUser : user)));
+    const updatedUsers = users.map(user => (user.id === updatedUser.id ? updatedUser : user));
+    updateUsersState(updatedUsers);
     closeModal();
   };
 
@@ -45,8 +67,9 @@ const UserTable: FC<UserTableProps> = ({ data }) => {
 
   return (
     <div className="px-10 py-8 bg-gray-50 rounded-3xl shadow-lg w-full mx-20">
-      <HeaderSection onAddUser={handleAddUser} />
-      <Table data={users} onEdit={handleEditUser} onDelete={handleDeleteUser} />
+      <HeaderSection onAddUser={handleAddUser} onSearch={handleSearch} />
+
+      <Table data={currentUsers} onEdit={handleEditUser} onDelete={handleDeleteUser} />
 
       {modalType === 'edit' && selectedUser && (
         <EditUser user={selectedUser} onClose={closeModal} onUpdate={updateUser} />
@@ -55,7 +78,17 @@ const UserTable: FC<UserTableProps> = ({ data }) => {
       {modalType === 'delete' && selectedUser && (
         <DeleteUser user={selectedUser} onCancel={closeModal} onDelete={confirmDelete} />
       )}
-      <Footer />
+      
+      <Footer
+        pageSize={pageSize}
+        onPageSizeChange={(size) => {
+          setPageSize(size);
+          setCurrentPage(1); 
+        }}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+      />
     </div>
   );
 };

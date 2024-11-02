@@ -71,7 +71,7 @@ function Signup() {
             <div className="card max-w-[370px] w-full">
                 <form onSubmit={signupHandler} className="card-body flex flex-col gap-5 p-10" id="sign_up_form">
                     <div className="text-center mb-2.5">
-                        <h3 className="text-xl font-semibold text-gray-900 leading-none mb-2.5">ثبت نام</h3>
+                        <h3 className="text-xl font-semibold text-gray-900 leading-none mb-2.5 dark:text-gray-300">ثبت نام</h3>
                         <div className="flex items-center justify-center font-medium">
                             <span className="text-md text-gray-700 me-1.5">آیا حساب کاربری دارید؟</span>
                             <Link className="text-md link" href="/auth/signin/">ورود</Link>

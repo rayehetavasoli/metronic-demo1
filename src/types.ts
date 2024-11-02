@@ -8,6 +8,11 @@ export interface User {
     date: Date;
   }
 
+  export interface HeaderSectionProps {
+    onAddUser: (user: User) => void;
+    onSearch: (query: string) => void;
+  }
+
   export interface UserTableProps {
     data: User[];
     onEdit: (user: User) => void; 
@@ -64,4 +69,22 @@ export interface AddBrandProps {
   brand: Brand; 
   onClose: () => void;  
   onAdd: (addBrand: Brand) => void; 
+}
+
+export interface HeaderSectionPropsB {
+  onAddBrand: (brand: Brand) => void;
+  onSearch: (query: string) => void;
+}
+
+export interface PaginationProps {
+  totalPages: number;             
+  currentPage: number;          
+  onPageChange: (page: number) => void;  
+}
+export interface FooterProps {
+  pageSize: number;     
+  onPageSizeChange: (size: number) => void;
+  currentPage: number;                    
+  totalPages: number;                   
+  onPageChange: (page: number) => void;   
 }

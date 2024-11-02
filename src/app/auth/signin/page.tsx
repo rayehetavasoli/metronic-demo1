@@ -63,7 +63,7 @@ function Signin() {
       <div className="card max-w-[370px] w-full">
         <form onSubmit={signinHandler} className="card-body flex flex-col gap-5 p-10">
             <div className="text-center mb-2.5">
-                <h3 className="text-lg font-medium text-gray-900 leading-none mb-2.5">
+                <h3 className="text-lg font-medium text-gray-900 leading-none mb-2.5 dark:text-gray-300">
                     ورود
                 </h3>
                 <div className="flex items-center justify-center font-medium">

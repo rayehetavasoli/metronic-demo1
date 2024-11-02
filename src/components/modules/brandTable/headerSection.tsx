@@ -1,25 +1,32 @@
 import React, { useState } from 'react';
-import { AddCircle, SearchNormal1, Notepad } from 'iconsax-react';
+import { AddCircle, Notepad, SearchNormal1 } from 'iconsax-react';
 import AddBrand from './addBrand';
 import './style.css';
 import { Brand } from '@/types';
 import { v4 as uuidv4 } from 'uuid';
+import { HeaderSectionPropsB } from '@/types';
 
-const HeaderSection: React.FC<{ onAddBrand: (brand: Brand) => void }> = ({ onAddBrand }) => {
+
+
+const HeaderSection: React.FC<HeaderSectionPropsB> = ({ onAddBrand, onSearch }) => {
   const [isAddBrandOpen, setIsAddBrandOpen] = useState(false);
-  const defaultBrand: Brand = { id: Number(uuidv4()), brandName: '', founded: '', country: '', industry: '' };
+  const defaultBrand: Brand = { id: Number(uuidv4()), brandName: '', founded: '', country: '', industry: ''};
 
   const handleAddBrand = (brand: Brand) => {
     onAddBrand(brand);
     setIsAddBrandOpen(false);
   };
 
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onSearch(event.target.value);
+  };
+
   return (
     <>
       <header className="flex justify-between items-center mb-3 px-4" dir="rtl">
         <div className="p-2 flex items-center gap-2">
-        <Notepad color="currentColor" className="w-6 h-6 relative justify-center items-center flex text-black dark:text-[#AAAAAA]"/>
-          <h1 className="text-2xl font-semibold">برند ها</h1>
+          <Notepad className="w-6 h-6" />
+          <h1 className="text-2xl font-semibold">برند</h1>
         </div>
 
         <div className="flex items-center gap-3">
@@ -31,6 +38,7 @@ const HeaderSection: React.FC<{ onAddBrand: (brand: Brand) => void }> = ({ onAdd
               className="search-input"
               type="search"
               placeholder="برند مورد نظر را جستجو کنید"
+              onChange={handleSearch}
             />
           </div>
 
@@ -42,7 +50,7 @@ const HeaderSection: React.FC<{ onAddBrand: (brand: Brand) => void }> = ({ onAdd
 
       {isAddBrandOpen && (
         <AddBrand
-          brand={defaultBrand}
+        brand={defaultBrand}
           onClose={() => setIsAddBrandOpen(false)}
           onAdd={handleAddBrand}
         />

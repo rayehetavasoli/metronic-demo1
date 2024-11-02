@@ -32,7 +32,10 @@ const EditBrand: React.FC<EditBrandProps> = ({ brand, onClose, onUpdate }) => {
         </button>
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <div className="flex-col justify-center items-start gap-5 inline-flex">
-          <div className="text-center text-black text-lg font-semibold px-5 justify-center items-center inline-flex">ویرایش اطلاعات برند</div>
+        <div className="self-stretch px-2 justify-start items-center gap-1 inline-flex ">
+            <Edit2 className="w-5 h-5 text-gray-900 flex justify-center items-center inline-flex"/>
+            <div className="text-center text-black text-lg font-semibold justify-center items-center inline-flex">ویرایش اطلاعات برند</div>
+          </div>        
         <form onSubmit={(e) => e.preventDefault()} className="justify-center items-center gap-4 flex flex-row">
        
          <div className="flex-col justify-center items-end gap-7 inline-flex">
@@ -50,7 +53,6 @@ const EditBrand: React.FC<EditBrandProps> = ({ brand, onClose, onUpdate }) => {
               onChange={(e) => setBrandName(e.target.value)}
               className="grow shrink basis-0 text-right text-black text-md font-normal bg-[#f4f4f4] w-full border-none outline-none focus:ring-0 "
             />
-            <Edit2 className="w-5 h-5 text-gray-500"/>
             </div>
           
 
@@ -62,7 +64,6 @@ const EditBrand: React.FC<EditBrandProps> = ({ brand, onClose, onUpdate }) => {
               className="grow shrink basis-0 text-right text-black text-md font-normal bg-[#f4f4f4] w-full border-none outline-none focus:ring-0 "
               
             />
-            <Edit2 className="w-5 h-5 text-gray-500"/>
             </div>
     
             <div className="w-full px-3 py-2 bg-[#f4f4f4] rounded-xl justify-between items-center gap-2 inline-flex">
@@ -71,9 +72,7 @@ const EditBrand: React.FC<EditBrandProps> = ({ brand, onClose, onUpdate }) => {
               value={country}
               onChange={(e) => setCountry(e.target.value)}
               className="grow shrink basis-0 text-right text-black text-md font-normal bg-[#f4f4f4] w-full border-none outline-none focus:ring-0 "
-            />
-            <Edit2 className="w-5 h-5 text-gray-500"/>
-            
+            />            
           </div>
 
           <div className="w-full px-3 py-2 bg-[#f4f4f4] rounded-xl justify-between items-center gap-2 inline-flex">
@@ -82,9 +81,7 @@ const EditBrand: React.FC<EditBrandProps> = ({ brand, onClose, onUpdate }) => {
               value={industry}
               onChange={(e) => setIndustry(e.target.value)}
               className="grow shrink basis-0 text-right text-black text-md font-normal bg-[#f4f4f4] w-full border-none outline-none focus:ring-0 "
-            />
-            <Edit2 className="w-5 h-5 text-gray-500"/>
-            
+            />            
           </div>
 
         </div>

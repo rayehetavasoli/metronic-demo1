@@ -63,7 +63,7 @@ function ResetPassword() {
             <div className="card max-w-[370px] w-full">
                 <form onSubmit={resetPasswordHandler} className="card-body flex flex-col gap-5 p-10" id="reset_password_change_password_form">
                     <div className="text-center">
-                        <h3 className="text-lg font-medium text-gray-900">بازیابی رمز عبور</h3>
+                        <h3 className="text-lg font-medium text-gray-900 dark:text-gray-300">بازیابی رمز عبور</h3>
                         <span className="text-2sm text-gray-700">رمز عبور جدید را وارد کنید</span>
                     </div>
 
