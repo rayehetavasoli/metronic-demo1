@@ -1,4 +1,4 @@
-import { CloseCircle, Edit2 } from "iconsax-react";
+import { CloseCircle, AddCircle } from "iconsax-react";
 import React, { useState } from "react";
 import { Brand } from '@/types';
 import {AddBrandProps} from '@/types';
@@ -37,8 +37,11 @@ const AddBrand: React.FC<AddBrandProps> = ({brand, onClose, onAdd }) => {
         </button>
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <div className="flex-col justify-center items-start gap-5 inline-flex">
-        <div className="text-center text-black text-lg font-semibold px-5 justify-center items-center inline-flex">افزودن کابر جدید</div>
-        <form onSubmit={(e) => e.preventDefault()} className="justify-center items-center gap-4 flex flex-row">
+        <div className="self-stretch px-2 justify-start items-center gap-1 inline-flex ">
+            <AddCircle className="w-5 h-5 text-gray-900 flex justify-center items-center inline-flex"/>
+            <div className="text-center text-black text-lg font-semibold justify-center items-center inline-flex">افزودن برند جدید</div>
+          </div>   
+       <form onSubmit={(e) => e.preventDefault()} className="justify-center items-center gap-4 flex flex-row">
        
         <div className="flex-col justify-center items-end gap-7 inline-flex">
           <div className="text-center text-black text-md  py-2 justify-center items-center inline-flex">نام</div>
@@ -56,7 +59,6 @@ const AddBrand: React.FC<AddBrandProps> = ({brand, onClose, onAdd }) => {
               onChange={(e) => setBrandName(e.target.value)}
               className="grow shrink basis-0 text-right text-black text-md font-normal bg-[#f4f4f4] w-full border-none outline-none focus:ring-0 placeholder:text-xs placeholder:text-gray-400"
             />
-            <Edit2 className="w-5 h-5 text-gray-500"/>
             </div>
           
 
@@ -67,9 +69,7 @@ const AddBrand: React.FC<AddBrandProps> = ({brand, onClose, onAdd }) => {
               value={founded}
               onChange={(e) => setFounded(e.target.value)}
               className="grow shrink basis-0 text-right text-black text-md font-normal bg-[#f4f4f4] w-full border-none outline-none focus:ring-0 placeholder:text-xs placeholder:text-gray-400"
-              
             />
-            <Edit2 className="w-5 h-5 text-gray-500"/>
             </div>
     
             <div className="w-full px-3 py-2 bg-[#f4f4f4] rounded-xl justify-between items-center gap-2 inline-flex">
@@ -80,7 +80,6 @@ const AddBrand: React.FC<AddBrandProps> = ({brand, onClose, onAdd }) => {
               onChange={(e) => setCountry(e.target.value)}
               className="grow shrink basis-0 text-right text-black text-md font-normal bg-[#f4f4f4] w-full border-none outline-none focus:ring-0 placeholder:text-xs placeholder:text-gray-400"
             />
-            <Edit2 className="w-5 h-5 text-gray-500"/>
             
           </div>
           <div className="w-full px-3 py-2 bg-[#f4f4f4] rounded-xl justify-between items-center gap-2 inline-flex">
@@ -90,9 +89,7 @@ const AddBrand: React.FC<AddBrandProps> = ({brand, onClose, onAdd }) => {
               value={industry}
               onChange={(e) => setIndustry(e.target.value)}
               className="grow shrink basis-0 text-right text-black text-md font-normal bg-[#f4f4f4] w-full border-none outline-none focus:ring-0 placeholder:text-xs placeholder:text-gray-400"
-            />
-            <Edit2 className="w-5 h-5 text-gray-500"/>
-            
+            />            
           </div>
         </div>
         </form>

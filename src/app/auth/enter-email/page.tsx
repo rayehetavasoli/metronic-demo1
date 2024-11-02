@@ -43,7 +43,7 @@ function EnterEmail() {
             <div className="card max-w-[370px] w-full">
                 <form onSubmit={enterEmailHandler} className="card-body flex flex-col gap-5 p-10" id="reset_password_enter_email_form">
                     <div className="text-center mb-2.5">
-                        <h3 className="text-lg font-medium text-gray-900">ایمیل</h3>
+                        <h3 className="text-lg font-medium text-gray-900 dark:text-gray-300">ایمیل</h3>
                         <span className="text-2sm text-gray-700">ایمیل خود را برای تغییر رمز عبور وارد کنید</span>
                     </div>
 

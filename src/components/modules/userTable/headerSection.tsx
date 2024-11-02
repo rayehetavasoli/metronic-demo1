@@ -4,14 +4,21 @@ import AddUser from './addUser';
 import './style.css';
 import { User } from '@/types';
 import { v4 as uuidv4 } from 'uuid';
+import { HeaderSectionProps } from '@/types';
 
-const HeaderSection: React.FC<{ onAddUser: (user: User) => void }> = ({ onAddUser }) => {
+
+
+const HeaderSection: React.FC<HeaderSectionProps> = ({ onAddUser, onSearch }) => {
   const [isAddUserOpen, setIsAddUserOpen] = useState(false);
   const defaultUser: User = { id: Number(uuidv4()), firstName: '', lastName: '', email: '', date: new Date() };
 
   const handleAddUser = (user: User) => {
     onAddUser(user);
     setIsAddUserOpen(false);
+  };
+
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onSearch(event.target.value);
   };
 
   return (
@@ -31,6 +38,7 @@ const HeaderSection: React.FC<{ onAddUser: (user: User) => void }> = ({ onAddUse
               className="search-input"
               type="search"
               placeholder="کاربر مورد نظر را جستجو کنید"
+              onChange={handleSearch}
             />
           </div>
 
