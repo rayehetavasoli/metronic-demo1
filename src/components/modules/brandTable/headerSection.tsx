@@ -43,7 +43,7 @@ const HeaderSection: React.FC<HeaderSectionPropsB> = ({ onAddBrand, onSearch }) 
           </div>
 
           <button onClick={() => setIsAddBrandOpen(true)}>
-            <AddCircle className="w-8 h-8" color="#4A4A4A" />
+            <AddCircle className="w-8 h-8 text-gray-600 hover:text-gray-800" />
           </button>
         </div>
       </header>

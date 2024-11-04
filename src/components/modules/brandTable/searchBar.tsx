@@ -10,7 +10,7 @@ const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       onSearch(searchText);
-    }, 300); 
+    }, 3000); 
 
     return () => clearTimeout(delayDebounceFn);
   }, [searchText, onSearch]);

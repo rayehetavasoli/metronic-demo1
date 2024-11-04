@@ -9,35 +9,8 @@ const DeleteBrand: React.FC<DeleteBrandProps> = ({ brand, onCancel, onDelete }) 
       <div className="flex flex-col justify-center items-center gap-4">
         <Warning2 className='w-10 h-10 justify-center items-center inline-flex' color='#f8285a'/>
         <h2 className="text-black text-lg font-medium text-right">
-          در صورت تائید این آیتم به طور کامل از لیست برندها حذف می شود، آیا مطمئن هستید؟
+          در صورت تائید برند {brand.brandName} به طور کامل از لیست برندها حذف می شود، آیا مطمئن هستید؟
         </h2>
-        <div className='flex flex-row justify-center items-center gap-4'>
-         <div className="flex-col justify-center items-end gap-7 inline-flex">
-          <div className="text-center text-black text-md  py-2 justify-center items-center inline-flex">نام</div>
-          <div className="text-center text-black text-md  py-2 justify-center items-center inline-flex">سال تاسیس</div>
-          <div className="text-center text-black text-md py-2 justify-center items-center inline-flex">کشور</div>
-          <div className="text-center text-black text-md py-2 justify-center items-center inline-flex">صنعت</div>
-        </div>
-
-        <div className="p-3 flex-col justify-center items-center gap-7 inline-flex"> 
-          <div className="px-6 py-2 bg-[#f4f4f4] rounded-xl justify-center items-center inline-flex w-full">
-           {brand.brandName}
-            </div>
-
-            <div className="px-6 py-2 bg-[#f4f4f4] rounded-xl justify-center items-center inline-flex w-full">
-            {brand.founded}
-            </div>
-    
-            <div className="px-6 py-2 bg-[#f4f4f4] rounded-xl justify-center items-center inline-flex w-full">
-            {brand.country}
-          </div>
-
-          <div className="px-6 py-2 bg-[#f4f4f4] rounded-xl justify-center items-center inline-flex w-full">
-            {brand.industry}
-          </div>
-        </div>
-      
-        </div>
 
         <div className="self-stretch flex justify-center items-center gap-4">
             <button 
