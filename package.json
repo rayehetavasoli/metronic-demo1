@@ -22,7 +22,6 @@
     "react-toggle-dark-mode": "^1.1.1",
     "redux": "^5.0.1",
     "sass": "^1.79.5",
-    "tailwind": "^4.0.0",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
