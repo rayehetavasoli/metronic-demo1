@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { AddCircle, Notepad, SearchNormal1 } from 'iconsax-react';
-import AddBrand from './addBrand';
+import {AddBrand} from './addBrand';
 import './style.css';
-import { Brand } from '@/types';
+import { Brand } from '@/types/main';
 import { v4 as uuidv4 } from 'uuid';
-import { HeaderSectionPropsB } from '@/types';
+import { HeaderSectionPropsB } from '@/types/main';
 
 
 

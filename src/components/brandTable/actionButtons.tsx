@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Edit, Trash } from 'iconsax-react';
-import { ActionButtonsProps } from '@/types';
+import { ActionButtonsProps } from '@/types/main';
 
 
 const ActionButtons: React.FC<ActionButtonsProps> = ({ onEdit, onDelete }) => {

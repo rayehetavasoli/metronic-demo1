@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import ActionButtons from './actionButtons';
 import {users} from '@/db/main';
-import { UserTableProps } from '@/types';
+import { UserTableProps } from '@/types/main';
 
 
 const Table: FC<UserTableProps> = ({ data, onEdit, onDelete }) => (

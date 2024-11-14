@@ -1,5 +1,5 @@
 import React from 'react';
-import { DeleteBrandProps } from '@/types';
+import { DeleteBrandProps } from '@/types/main';
 import { Warning2 } from 'iconsax-react';
 
 const DeleteBrand: React.FC<DeleteBrandProps> = ({ brand, onCancel, onDelete }) => {

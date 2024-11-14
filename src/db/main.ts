@@ -1,5 +1,5 @@
-import { User } from "@/types";
-import { Brand } from "@/types";
+import { User } from "@/types/main";
+import { Brand } from "@/types/main";
 
 export const users: User[] = [
   { id: 1, firstName: 'علی', lastName: 'امینی', email: 'ali.amini@gmail.com', date: new Date('2024-04-30') },

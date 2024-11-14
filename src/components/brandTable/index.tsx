@@ -3,9 +3,9 @@ import React, { FC, useState, useMemo } from 'react';
 import HeaderSection from './headerSection';
 import Footer from './footer';
 import { Table } from './brandTable';
-import EditBrand from './editBrand';
+import {EditBrand} from './editBrand';
 import DeleteBrand from './deleteBrand';
-import { Brand, BrandTableProps } from '@/types';
+import { Brand, BrandTableProps } from '@/types/main';
 
 const BrandTable: FC<BrandTableProps> = ({ data }) => {
   const [brands, setBrands] = useState<Brand[]>(data);

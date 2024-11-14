@@ -1,5 +1,5 @@
 import React from 'react';
-import { DeleteUserProps } from '@/types';
+import { DeleteUserProps } from '@/types/main';
 import { Warning2 } from 'iconsax-react';
 
 const DeleteUser: React.FC<DeleteUserProps> = ({ user, onCancel, onDelete }) => {

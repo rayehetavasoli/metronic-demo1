@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import ActionButtons from './actionButtons';
-import {brands} from '@/db/main';
-import { BrandTableProps } from '@/types';
+import { BrandTableProps } from '@/types/main';
 
 
 const Table: FC<BrandTableProps> = ({ data, onEdit, onDelete }) => (

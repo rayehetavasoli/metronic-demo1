@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { AddCircle, SearchNormal1, UserEdit } from 'iconsax-react';
-import AddUser from './addUser';
+import {AddUser} from './addUser';
 import './style.css';
-import { User } from '@/types';
+import { User } from '@/types/main';
 import { v4 as uuidv4 } from 'uuid';
-import { HeaderSectionProps } from '@/types';
+import { HeaderSectionProps } from '@/types/main';
 
 
 
