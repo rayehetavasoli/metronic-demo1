@@ -1,5 +1,5 @@
 import React from 'react'
-import {UserTable} from '@/components/modules/userTable/index'
+import {UserTable} from '@/components/userTable/index'
 import {users} from '@/db/main'
 
 function Users() {

@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import localFont from "next/font/local";
 import Header from '@/components/core/header'
 import Sidebar from '@/components/core/sidebar'
 import Footer from '@/components/core/footer'
 
-
-const mainFont = localFont({ src: "../assets/fonts/Vazir.ttf"});
 
 
 export const metadata: Metadata = {
@@ -14,26 +10,19 @@ export const metadata: Metadata = {
   description: "",
 };
 
-export default function RootLayout({
+export default function MainLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa">
-      <body
-        className={`${mainFont.style.fontFamily}`}
-      >
-         <div className="size-full justify-center items-start inline-flex min-h-lvh">
-      <div className="grow shrink basis-0  bg-[#f5f5f5] dark:bg-[#181818] flex-col justify-between items-center inline-flex">
+    <div className="size-full justify-center items-start inline-flex">
+      <div className="grow shrink basis-0  bg-[#f5f5f5] dark:bg-[#181818] flex-col justify-between items-center inline-flex min-h-lvh">
         <Header/>
         <div className="px-20 py-15 justify-center items-center my-16 size-full mx-10" >{children}</div>
         <Footer/>
       </div>
       <Sidebar/>
     </div>
-        
-      </body>
-    </html>
   );
 }
