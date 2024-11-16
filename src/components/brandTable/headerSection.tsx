@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Add, Notepad, SearchNormal1 } from 'iconsax-react';
 import {AddBrand} from './addBrand';
-import './style.css';
 import { Brand } from '@/types/main';
 import { v4 as uuidv4 } from 'uuid';
 import { HeaderSectionPropsB } from '@/types/main';
