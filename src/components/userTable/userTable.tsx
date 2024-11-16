@@ -5,8 +5,8 @@ import { UserTableProps } from '@/types/main';
 
 
 const Table: FC<UserTableProps> = ({ data, onEdit, onDelete }) => (
-  <table className="min-w-full bg-white rounded-[28px] shadow-lg text-right" dir="rtl">
-    <thead className="bg-gray-100">
+  <table className="min-w-full bg-white dark:bg-dark-bg-secondary rounded-[28px] shadow-lg text-right" dir="rtl">
+    <thead className="bg-gray-100 dark:bg-gray-900">
       <tr>
         {['نام', 'نام خانوادگی', 'ایمیل', 'تاریخ ثبت', 'عملیات'].map((header, index) => (
           <th key={index} className="p-3 text-center">
@@ -18,7 +18,7 @@ const Table: FC<UserTableProps> = ({ data, onEdit, onDelete }) => (
     <tbody>
       {data.length > 0 ? (
         data.map((user) => (
-          <tr key={user.id} className="odd:bg-gray-50 even:bg-white">
+          <tr key={user.id} className="odd:bg-gray-50 even:bg-white dark:odd:bg-gray-900 dark:even:bg-dark-bg-primary">
             <td className="p-3 text-center">{user.firstName}</td>
             <td className="p-3 text-center">{user.lastName}</td>
             <td className="p-3 text-center">{user.email}</td>

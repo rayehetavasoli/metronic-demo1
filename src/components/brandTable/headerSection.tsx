@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { AddCircle, Notepad, SearchNormal1 } from 'iconsax-react';
+import { Add, Notepad, SearchNormal1 } from 'iconsax-react';
 import {AddBrand} from './addBrand';
 import './style.css';
 import { Brand } from '@/types/main';
 import { v4 as uuidv4 } from 'uuid';
 import { HeaderSectionPropsB } from '@/types/main';
+import "./style/searchBar.css"
 
 
 
@@ -26,11 +27,11 @@ const HeaderSection: React.FC<HeaderSectionPropsB> = ({ onAddBrand, onSearch }) 
       <header className="flex justify-between items-center mb-3 px-4" dir="rtl">
         <div className="p-2 flex items-center gap-2">
           <Notepad className="w-6 h-6" />
-          <h1 className="text-2xl font-semibold">برند</h1>
+          <h1 className="text-2xl font-semibold dark:text-dark-text-primary">برند</h1>
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="search-container">
+          <div className="search-container dark:bg-dark-bg-secondary">
             <button>
               <SearchNormal1 className="search-icon" />
             </button>
@@ -43,7 +44,7 @@ const HeaderSection: React.FC<HeaderSectionPropsB> = ({ onAddBrand, onSearch }) 
           </div>
 
           <button onClick={() => setIsAddBrandOpen(true)}>
-            <AddCircle className="w-8 h-8 text-gray-600 hover:text-gray-800" />
+            <Add className="w-8 h-8 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
           </button>
         </div>
       </header>

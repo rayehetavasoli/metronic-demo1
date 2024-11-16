@@ -1,0 +1,56 @@
+.icon{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: black;
+}
+
+.logo{
+    align-self: stretch;
+    padding: 28px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    display: inline-flex;
+}
+
+.link{
+    text-align: center;
+    color: black;
+    font-size: medium;
+    font-weight: medium;
+}
+
+.link:hover{
+    color: #1b84ff ;
+}
+
+.baseinfo{
+    text-align: center;
+    color: #9ca3af;
+    font-size: medium;
+    font-weight: normal;
+}
+
+.baseinfo-icon{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 20px;
+    height: 20px;
+    color: #7a7a7a ;
+}
+
+.baseinfo-item{
+    padding-left: 8px;
+    padding-right: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    display: inline-flex;
+    align-self: stretch;
+}

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { AddCircle, SearchNormal1, UserEdit } from 'iconsax-react';
+import { Add, SearchNormal1, UserEdit } from 'iconsax-react';
 import {AddUser} from './addUser';
-import './style.css';
 import { User } from '@/types/main';
 import { v4 as uuidv4 } from 'uuid';
 import { HeaderSectionProps } from '@/types/main';
-
+import "./style/searchBar.css"
 
 
 const HeaderSection: React.FC<HeaderSectionProps> = ({ onAddUser, onSearch }) => {
@@ -30,7 +29,7 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({ onAddUser, onSearch }) =>
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="search-container">
+          <div className="search-container dark:bg-dark-bg-secondary">
             <button>
               <SearchNormal1 className="search-icon" />
             </button>
@@ -43,7 +42,7 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({ onAddUser, onSearch }) =>
           </div>
 
           <button onClick={() => setIsAddUserOpen(true)}>
-            <AddCircle className="w-8 h-8 text-gray-600 hover:text-gray-800" />
+          <Add className="w-8 h-8 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
           </button>
         </div>
       </header>
