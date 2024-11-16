@@ -25,7 +25,7 @@ export default function RootLayout({
         className={`${mainFont.style.fontFamily}`}
       >
          <div className="size-full justify-center items-start inline-flex min-h-lvh">
-      <div className="grow shrink basis-0  bg-[#f5f5f5] dark:bg-[#181818] flex-col justify-between items-center inline-flex">
+      <div className="grow shrink basis-0  bg-light-bg-primary dark:bg-dark-bg-primary flex-col justify-between items-center inline-flex">
         <Header/>
         <div className="px-20 py-15 justify-center items-center my-16 size-full mx-10" >{children}</div>
         <Footer/>

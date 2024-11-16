@@ -41,7 +41,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage, onPage
       <button
         onClick={handlePrev}
         className={`w-7 h-7 rounded-full flex items-center justify-center ${
-          currentPage === 1 ? 'bg-gray-200 cursor-not-allowed' : 'bg-gray-100 hover:bg-gray-200'
+          currentPage === 1 ? 'bg-gray-200 dark:bg-gray-800 cursor-not-allowed' : 'bg-gray-100 hover:bg-gray-200 dark:bg-gray-900 dark:hover:bg-gray-800'
         }`}
         disabled={currentPage === 1}
       >
@@ -53,7 +53,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage, onPage
           key={index}
           onClick={() => typeof page === 'number' && handlePageClick(page)}
           className={`px-2 py-1 rounded-2xl text-center text-sm font-normal cursor-pointer ${
-            currentPage === page ? 'bg-blue-500 text-white font-bold' : 'text-black hover:bg-gray-200'
+            currentPage === page ? 'bg-blue-500 text-white dark:text-gray-100 font-bold' : 'text-black hover:bg-gray-200 dark:text-dark-text-primary dark:hover:bg-gray-800'
           } ${page === "..." ? 'cursor-default' : ''}`}
         >
           {page}
@@ -63,7 +63,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage, onPage
       <button
         onClick={handleNext}
         className={`w-7 h-7 rounded-full flex items-center justify-center ${
-          currentPage === totalPages ? 'bg-gray-200 cursor-not-allowed' : 'bg-gray-100 hover:bg-gray-200'
+          currentPage === totalPages ? 'bg-gray-200 dark:bg-gray-800 cursor-not-allowed' : 'bg-gray-100 hover:bg-gray-200 dark:bg-gray-900 dark:hover:bg-gray-800'
         }`}
         disabled={currentPage === totalPages}
       >

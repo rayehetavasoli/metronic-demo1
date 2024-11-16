@@ -4,8 +4,8 @@ import { BrandTableProps } from '@/types/main';
 
 
 const Table: FC<BrandTableProps> = ({ data, onEdit, onDelete }) => (
-  <table className="min-w-full bg-white rounded-[28px] shadow-lg text-right" dir="rtl">
-    <thead className="bg-gray-100">
+  <table className="min-w-full bg-white dark:bg-dark-bg-secondary rounded-[28px] shadow-lg text-right" dir="rtl">
+    <thead className="bg-gray-100 dark:bg-gray-900">
       <tr>
         {['نام', 'سال تاسیس', 'کشور', 'صنعت', 'عملیات'].map((header, index) => (
           <th key={index} className="p-3 text-center">
@@ -17,7 +17,7 @@ const Table: FC<BrandTableProps> = ({ data, onEdit, onDelete }) => (
     <tbody>
       {data.length > 0 ? (
         data.map((brand) => (
-          <tr key={brand.id} className="odd:bg-gray-50 even:bg-white">
+          <tr key={brand.id} className="odd:bg-gray-50 even:bg-white dark:odd:bg-gray-900 dark:even:bg-dark-bg-primary">
             <td className="p-3 text-center">{brand.brandName}</td>
             <td className="p-3 text-center">{brand.founded}</td>
             <td className="p-3 text-center">{brand.country}</td>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CloseCircle, AddCircle, Edit2 } from "iconsax-react";
 import { UserFormProps, User } from '@/types/main';
+import "./style/userForm.css";
 
 
 const UserForm: React.FC<UserFormProps> = ({ user, onClose, onSave, mode }) => {
@@ -54,15 +55,15 @@ const UserForm: React.FC<UserFormProps> = ({ user, onClose, onSave, mode }) => {
           </div>
 
           <form onSubmit={(e) => e.preventDefault()} className="flex flex-row gap-4 justify-center items-center">
-            <div className="flex-col items-end gap-7 inline-flex">
-              <label className="text-center text-black text-md  py-2 justify-center items-center inline-flex">نام</label>
-              <label className="text-center text-black text-md  py-2 justify-center items-center inline-flex">نام خانوادگی</label>
-              <label className="text-center text-black text-md  py-2 justify-center items-center inline-flex">ایمیل</label>
+            <div className="flex-col justify-center items-end gap-7 inline-flex">
+              <label className="label dark:text-gray-100">نام</label>
+              <label className="label dark:text-gray-100">نام خانوادگی</label>
+              <label className="label dark:text-gray-100">ایمیل</label>
             </div>
 
-            <div className="flex-col gap-7 inline-flex">
+            <div className="p-3 flex-col justify-center items-center gap-7 inline-flex">
               {['firstName', 'lastName', 'email'].map((field, index) => (
-                <div key={index} className="w-full px-3 py-2  bg-[#f4f4f4] rounded-xl justify-between items-center gap-2 inline-flex">
+                <div key={index} className="bg-light-bg-primary dark:bg-dark-bg-primary rounded-xl justify-between items-center gap-2 inline-flex">
                   <input
                     type={field === 'email' ? 'email' : 'text'}
                     name={field}
@@ -73,7 +74,7 @@ const UserForm: React.FC<UserFormProps> = ({ user, onClose, onSave, mode }) => {
                     }`}
                     value={formData[field as keyof User]}
                     onChange={handleChange}
-                    className="grow shrink basis-0 text-right text-black text-md font-normal bg-[#f4f4f4] w-full border-none outline-none focus:ring-0 "
+                    className="grow shrink basis-0 text-right text-black text-md font-normal bg-light-bg-primary dark:bg-dark-bg-secondary w-full border-none outline-none focus:ring-0 "
                   />
                 </div>
               ))}
@@ -83,7 +84,7 @@ const UserForm: React.FC<UserFormProps> = ({ user, onClose, onSave, mode }) => {
           <button
             type="button"
             onClick={handleSubmit}
-            className="text-center text-white text-md font-medium px-5 py-2 bg-[#1b84ff] rounded-2xl justify-center items-center inline-flex"
+            className="text-center text-white text-md font-medium px-5 py-2 bg-blue-primary rounded-2xl justify-center items-center inline-flex"
           >
             {mode === 'add' ? 'تائید و اضافه' : 'بروزرسانی'}
           </button>
