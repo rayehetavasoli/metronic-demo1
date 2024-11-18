@@ -63,7 +63,7 @@ const UserForm: React.FC<UserFormProps> = ({ user, onClose, onSave, mode }) => {
 
             <div className="p-3 flex-col justify-center items-center gap-7 inline-flex">
               {['firstName', 'lastName', 'email'].map((field, index) => (
-                <div key={index} className="bg-light-bg-primary dark:bg-dark-bg-primary rounded-xl justify-between items-center gap-2 inline-flex">
+                <div key={index} className="w-full px-3 py-2 bg-light-bg-primary dark:bg-dark-bg-primary rounded-xl justify-between items-center gap-2 inline-flex">
                   <input
                     type={field === 'email' ? 'email' : 'text'}
                     name={field}

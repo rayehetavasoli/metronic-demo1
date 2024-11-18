@@ -66,7 +66,7 @@ const BrandTable: FC<BrandTableProps> = ({ data }) => {
   };
 
   return (
-    <div className="px-10 py-8 bg-gray-50 dark:bg-dark-bg-sedondary rounded-3xl shadow-lg w-full mx-18">
+    <div className="px-10 py-8 bg-gray-50 dark:bg-dark-bg-table rounded-3xl shadow-lg w-full mx-18">
       <HeaderSection onAddBrand={handleAddBrand} onSearch={handleSearch} />
 
       <Table data={currentBrands} onEdit={handleEditBrand} onDelete={handleDeleteBrand} />

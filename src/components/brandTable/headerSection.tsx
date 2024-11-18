@@ -25,8 +25,8 @@ const HeaderSection: React.FC<HeaderSectionPropsB> = ({ onAddBrand, onSearch }) 
     <>
       <header className="flex justify-between items-center mb-3 px-4" dir="rtl">
         <div className="p-2 flex items-center gap-2">
-          <Notepad className="w-6 h-6" />
-          <h1 className="text-2xl font-semibold dark:text-dark-text-primary">برند</h1>
+          <Notepad className="w-6 h-6 dark:text-gray-100" />
+          <h1 className="text-2xl font-semibold dark:text-gray-100">برند</h1>
         </div>
 
         <div className="flex items-center gap-3">

@@ -6,7 +6,7 @@ const DeleteBrand: React.FC<DeleteBrandProps> = ({ brand, onCancel, onDelete }) 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
     <div className=" px-7 py-6 bg-white dark:bg-dark-bg-primary rounded-[32px] shadow flex flex-col justify-center items-center max-w-md" dir='rtl'>
-      <div className="flex flex-col justify-center items-center gap-4">
+      <div className="flex flex-col justify-center items-center gap-8">
         <Warning2 className='w-10 h-10 justify-center items-center inline-flex' color='#f8285a'/>
         <h2 className="text-black dark:text-dark-text-primary text-lg font-medium text-right">
           در صورت تائید برند {brand.brandName} به طور کامل از لیست برندها حذف می شود، آیا مطمئن هستید؟
@@ -20,7 +20,7 @@ const DeleteBrand: React.FC<DeleteBrandProps> = ({ brand, onCancel, onDelete }) 
             تائید و حذف
           </button>
           <button 
-            className="px-4 py-2 bg-white dark:bg-dark-bg-primary border border-black rounded-[20px] text-dark-text-primary text-md font-medium"
+            className="px-4 py-2 bg-white dark:bg-dark-bg-secondary border border-black dark:border-dark-text-primary rounded-[20px] text-dark-text-primary text-md font-medium"
             onClick={onCancel}
           >
             لغو
