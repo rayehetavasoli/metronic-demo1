@@ -4,6 +4,7 @@ import Image from 'next/image'
 import person from "../../../assets/images/person.png";
 import Link from 'next/link';
 import Switcher from './themeMode';
+import'./style.css';
 
 
 function Header() {
