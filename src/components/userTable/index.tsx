@@ -66,7 +66,7 @@ const UserTable: FC<UserTableProps> = ({ data }) => {
   };
 
   return (
-    <div className="px-10 py-8 bg-gray-50 dark:bg-dark-bg-sedondary rounded-3xl shadow-lg w-full mx-18">
+    <div className="px-10 py-8 bg-gray-50 dark:bg-dark-bg-table rounded-3xl shadow-lg w-full mx-18">
       <HeaderSection onAddUser={handleAddUser} onSearch={handleSearch} />
 
       <Table data={currentUsers} onEdit={handleEditUser} onDelete={handleDeleteUser} />

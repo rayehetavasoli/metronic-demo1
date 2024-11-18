@@ -3,6 +3,7 @@ import { Element3 , InfoCircle , Notepad , UserEdit} from 'iconsax-react'
 import Image from 'next/image'
 import Vector from "../../../assets/images/Vector.png";
 import Link from 'next/link';
+import'./style.css';
 
 function Sidebar() {
   return (

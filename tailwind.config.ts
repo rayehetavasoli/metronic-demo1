@@ -26,10 +26,13 @@ const config: Config = {
         "light-bg-image": "#f9f9f9",
         "light-text-secondary" : "#4a4a4a",
 
-        "dark-bg-primary": "#181818",
-        "dark-bg-secondary": "#1E1E1E",
+        "dark-bg-primary": "#202123 ",
+        "dark-bg-secondary": "#2C2D30 ",
         "dark-bg-image": "#333333",
-        "dark-text-primary": "#AAAAAA"
+        "dark-text-primary": "#CDCDCD",
+        "dark-bg-table" : "#343434",
+        "dark-odd-table":"#2E2E2F",
+        "dark-even-table": "#29292C",
         
       },
     },

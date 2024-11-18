@@ -24,8 +24,8 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({ onAddUser, onSearch }) =>
     <>
       <header className="flex justify-between items-center mb-3 px-4" dir="rtl">
         <div className="p-2 flex items-center gap-2">
-          <UserEdit className="w-6 h-6" />
-          <h1 className="text-2xl font-semibold">کاربران</h1>
+          <UserEdit className="w-6 h-6 dark:text-gray-100" />
+          <h1 className="text-2xl font-semibold dark:text-gray-100">کاربران</h1>
         </div>
 
         <div className="flex items-center gap-3">

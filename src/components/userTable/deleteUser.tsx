@@ -21,7 +21,7 @@ const DeleteUser: React.FC<DeleteUserProps> = ({ user, onCancel, onDelete }) => 
             تائید و حذف
           </button>
           <button 
-            className="px-4 py-2 bg-white dark:bg-dark-bg-secondary border border-black rounded-[20px] text-dark-text-primary text-md font-medium"
+            className="px-4 py-2 bg-white dark:bg-dark-bg-secondary border border-black dark:border-dark-text-primary rounded-[20px] text-dark-text-primary text-md font-medium"
             onClick={onCancel}
           >
             لغو
