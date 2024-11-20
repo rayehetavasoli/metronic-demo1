@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import ActionButtons from '../base/actionButtons';
+import ActionButtons from '../base/ActionButtons';
 import { PartTableProps } from '@/types/main';
 
 

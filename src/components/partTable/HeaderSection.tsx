@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Add, Notepad, SearchNormal1, Setting3 } from 'iconsax-react';
+import { Add, SearchNormal1, Setting3 } from 'iconsax-react';
 import {AddPart} from './AddPart';
 import { Part } from '@/types/main';
 import { v4 as uuidv4 } from 'uuid';
@@ -42,7 +42,7 @@ const HeaderSection: React.FC<HeaderSectionPropsPart> = ({ onAddPart, onSearch }
 
       {isAddPartOpen && (
         <AddPart
-        part={defaultPart}
+          part={defaultPart}
           onClose={() => setIsAddPartOpen(false)}
           onAdd={handleAddPart}
         />

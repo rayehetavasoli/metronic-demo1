@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Add, DollarSquare, Notepad, SearchNormal1 } from 'iconsax-react';
+import { Add, DollarSquare, SearchNormal1 } from 'iconsax-react';
 import {AddInspectionCost} from './AddInspectionCost';
 import { InspectionCost } from '@/types/main';
 import { v4 as uuidv4 } from 'uuid';

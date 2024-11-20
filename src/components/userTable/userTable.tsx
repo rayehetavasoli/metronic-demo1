@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import ActionButtons from '../base/actionButtons';
+import ActionButtons from '../base/ActionButtons';
 import {users} from '@/db/main';
 import { UserTableProps } from '@/types/main';
 
