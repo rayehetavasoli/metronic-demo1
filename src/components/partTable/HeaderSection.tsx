@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Add, Notepad, SearchNormal1 } from 'iconsax-react';
+import { Add, Notepad, SearchNormal1, Setting3 } from 'iconsax-react';
 import {AddPart} from './AddPart';
 import { Part } from '@/types/main';
 import { v4 as uuidv4 } from 'uuid';
@@ -22,7 +22,7 @@ const HeaderSection: React.FC<HeaderSectionPropsPart> = ({ onAddPart, onSearch }
     <>
       <header className="flex justify-between items-center mb-3 px-4" dir="rtl">
         <div className="p-2 flex items-center gap-2">
-          <Notepad className="w-6 h-6 dark:text-gray-100" />
+          <Setting3 className="w-6 h-6 dark:text-gray-100" />
           <h1 className="text-2xl font-semibold dark:text-gray-100">قطعات</h1>
         </div>
 

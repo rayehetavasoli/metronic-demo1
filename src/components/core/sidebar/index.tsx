@@ -1,5 +1,5 @@
 import React from 'react'
-import { Element3 , InfoCircle , Notepad , UserEdit} from 'iconsax-react'
+import { DollarSquare, Element3 , InfoCircle , Notepad , Setting3, UserEdit} from 'iconsax-react'
 import Image from 'next/image'
 import Vector from "../../../assets/images/Vector.png";
 import Link from 'next/link';
@@ -26,11 +26,11 @@ function Sidebar() {
                 <Link href="/users" className="link dark:text-gray-200 ">کاربر</Link>
             </div>
             <div className="baseinfo-item">
-              <Notepad  className="icon dark:text-dark-text-primary" color="currentColor"/>
+              <Setting3  className="icon dark:text-dark-text-primary" color="currentColor"/>
                 <Link href="/parts" className="link dark:text-gray-200 ">قطعات آسانسور</Link>
             </div>
             <div className="baseinfo-item">
-              <Notepad  className="icon dark:text-dark-text-primary" color="currentColor"/>
+              <DollarSquare  className="icon dark:text-dark-text-primary" color="currentColor"/>
                 <Link href="/inspection-cost" className="link dark:text-gray-200 ">هزینه بازرسی</Link>
             </div>
         </div>

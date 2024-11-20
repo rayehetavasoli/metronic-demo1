@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Add, Notepad, SearchNormal1 } from 'iconsax-react';
+import { Add, DollarSquare, Notepad, SearchNormal1 } from 'iconsax-react';
 import {AddInspectionCost} from './AddInspectionCost';
 import { InspectionCost } from '@/types/main';
 import { v4 as uuidv4 } from 'uuid';
@@ -23,7 +23,7 @@ const HeaderSection: React.FC<HeaderSectionPropsInspectionCost> = ({ onAddInspec
     <>
       <header className="flex justify-between items-center mb-3 px-4" dir="rtl">
         <div className="p-2 flex items-center gap-2">
-          <Notepad className="w-6 h-6 dark:text-gray-100" />
+          <DollarSquare className="w-6 h-6 dark:text-gray-100" />
           <h1 className="text-2xl font-semibold dark:text-gray-100">هزینه بازرسی استاندارد</h1>
         </div>
 
