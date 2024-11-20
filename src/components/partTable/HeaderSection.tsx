@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Add, Notepad, SearchNormal1 } from 'iconsax-react';
-import {AddPart} from './addPart';
+import {AddPart} from './AddPart';
 import { Part } from '@/types/main';
 import { v4 as uuidv4 } from 'uuid';
 import { HeaderSectionPropsPart } from '@/types/main';
-import "./style/searchBar.css"
+import "./style/searchBar.css";
+import SearchBar from './SearchBar';
 
 
 
@@ -15,10 +16,6 @@ const HeaderSection: React.FC<HeaderSectionPropsPart> = ({ onAddPart, onSearch }
   const handleAddPart = (part: Part) => {
     onAddPart(part);
     setIsAddPartOpen(false);
-  };
-
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onSearch(event.target.value);
   };
 
   return (
@@ -34,12 +31,7 @@ const HeaderSection: React.FC<HeaderSectionPropsPart> = ({ onAddPart, onSearch }
             <button>
               <SearchNormal1 className="search-icon" />
             </button>
-            <input
-              className="search-input"
-              type="search"
-              placeholder="قطعه یا برند مورد نظر را جستجو کنید"
-              onChange={handleSearch}
-            />
+            <SearchBar onSearch={onSearch}/>
           </div>
 
           <button onClick={() => setIsAddPartOpen(true)}>

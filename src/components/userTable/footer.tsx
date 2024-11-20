@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Pagination from './pagination';
+import Pagination from '../base/Pagination';
 import { FooterProps } from '@/types/main';
 
 const Footer: FC<FooterProps> = ({ pageSize, onPageSizeChange, currentPage, totalPages, onPageChange }) => {

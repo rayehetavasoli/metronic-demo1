@@ -1,10 +1,10 @@
 'use client';
 import React, { FC, useState, useMemo } from 'react';
-import HeaderSection from './headerSection';
-import Footer from './footer';
-import { Table } from './userTable';
-import {EditUser} from './editUser';
-import DeleteUser from './deleteUser';
+import HeaderSection from './HeaderSection';
+import Footer from './Footer';
+import { Table } from './UserTable';
+import {EditUser} from './EditUser';
+import DeleteUser from './DeleteUser';
 import { User, UserTableProps } from '@/types/main';
 
 const UserTable: FC<UserTableProps> = ({ data }) => {

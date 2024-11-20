@@ -107,3 +107,49 @@ mode: PartFormMode; // مشخص می‌کند که فرم در حالت افزو
 }
 
 
+//هزینه بازرسی استاندارد 
+export interface InspectionCost {
+  id: number;
+  inspectionType: string; // نوع بازرسی
+  cost: number; // هزینه بازرسی
+}
+
+
+export interface InspectionCostTableProps {
+data: InspectionCost[]; 
+onEdit: (inspectionCost: InspectionCost) => void; 
+onDelete: (inspectionCost: InspectionCost) => void; 
+}
+
+export interface EditInspectionCostProps {
+inspectionCost: InspectionCost; 
+onClose: () => void;  
+onUpdate: (updatedInspectionCost: InspectionCost) => void; 
+}
+
+export interface DeleteInspectionCostProps {
+inspectionCost: InspectionCost;
+onCancel: () => void;
+onDelete: () => void;
+}
+
+export interface AddInspectionCostProps {
+inspectionCost: InspectionCost; 
+onClose: () => void;  
+onAdd: (addInspectionCost: InspectionCost) => void; 
+}
+
+export interface HeaderSectionPropsInspectionCost {
+onAddInspectionCost: (inspectionCost: InspectionCost) => void;
+onSearch: (query: string) => void;
+}
+
+
+export type InspectionCostFormMode = 'add' | 'edit';
+
+export interface InspectionCostFormProps {
+inspectionCost?: InspectionCost; // این پراپ اختیاری است، چون در حالت افزودن نیازی به مقدار اولیه نیست.
+onClose: () => void; // تابع بستن فرم
+onSave: (inspectionCost: InspectionCost) => void; // تابع ذخیره که برند جدید یا ویرایش‌شده را می‌گیرد
+mode: InspectionCostFormMode; // مشخص می‌کند که فرم در حالت افزودن یا ویرایش است
+}

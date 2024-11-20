@@ -1,6 +1,4 @@
-import { User } from "@/types/main";
-// import { Part } from "@/types/main";
-import {Part} from "@/types/main";
+import { User , Part , InspectionCost} from "@/types/main";
 
 export const users: User[] = [
   { id: 1, firstName: 'علی', lastName: 'امینی', email: 'ali.amini@gmail.com', date: new Date('2024-04-30') },
@@ -55,58 +53,7 @@ export const users: User[] = [
   { id: 50, firstName: 'سهیل', lastName: 'جمشیدی', email: 'soheil.jamshidi@gmail.com', date: new Date('2023-10-15') }
 ];
 
-// export const parts: Part[] = [
-//   { id: 1, partName: 'مرسدس بنز', founded: "1926", country: 'آلمان', industry: 'وسایل نقلیه' },
-//   { id: 2, partName: 'ایسوس', founded: "1989", country: 'تایوان', industry: 'سخت‌افزار رایانه' },
-//   { id: 3, partName: 'تویوتا', founded: "1937", country: 'ژاپن', industry: 'وسایل نقلیه' },
-//   { id: 4, partName: 'اپل', founded: "1976", country: 'ایالات متحده آمریکا', industry: 'سخت‌افزار رایانه' },
-//   { id: 5, partName: 'بوش', founded: "1886", country: 'آلمان', industry: 'لوازم برقی' },
-//   { id: 6, partName: 'سامسونگ', founded: "1938", country: 'کره جنوبی', industry: 'لوازم الکترونیکی' },
-//   { id: 7, partName: 'هیوندای', founded: "1967", country: 'کره جنوبی', industry: 'وسایل نقلیه' },
-//   { id: 8, partName: 'کوکاکولا', founded: "1892", country: 'ایالات متحده آمریکا', industry: 'نوشیدنی' },
-//   { id: 9, partName: 'نایک', founded: "1964", country: 'ایالات متحده آمریکا', industry: 'پوشاک' },
-//   { id: 10, partName: 'پپسی', founded: "1898", country: 'ایالات متحده آمریکا', industry: 'نوشیدنی' },
-//   { id: 11, partName: 'مایکروسافت', founded: "1975", country: 'ایالات متحده آمریکا', industry: 'نرم‌افزار' },
-//   { id: 12, partName: 'سونی', founded: "1946", country: 'ژاپن', industry: 'لوازم الکترونیکی' },
-//   { id: 13, partName: 'هواوی', founded: "1987", country: 'چین', industry: 'مخابرات' },
-//   { id: 14, partName: 'شورلت', founded: "1911", country: 'ایالات متحده آمریکا', industry: 'وسایل نقلیه' },
-//   { id: 15, partName: 'آدیداس', founded: "1949", country: 'آلمان', industry: 'پوشاک' },
-//   { id: 16, partName: 'پاناسونیک', founded: "1918", country: 'ژاپن', industry: 'لوازم الکترونیکی' },
-//   { id: 17, partName: 'مک‌دونالد', founded: "1940", country: 'ایالات متحده آمریکا', industry: 'غذا' },
-//   { id: 18, partName: 'آمازون', founded: "1994", country: 'ایالات متحده آمریکا', industry: 'تجارت الکترونیک' },
-//   { id: 19, partName: 'فورد', founded: "1903", country: 'ایالات متحده آمریکا', industry: 'وسایل نقلیه' },
-//   { id: 20, partName: 'کاترپیلار', founded: "1925", country: 'ایالات متحده آمریکا', industry: 'ماشین‌آلات سنگین' },
-//   { id: 21, partName: 'اینتل', founded: "1968", country: 'ایالات متحده آمریکا', industry: 'سخت‌افزار رایانه' },
-//   { id: 22, partName: 'دل', founded: "1984", country: 'ایالات متحده آمریکا', industry: 'سخت‌افزار رایانه' },
-//   { id: 23, partName: 'لنوو', founded: "1984", country: 'چین', industry: 'سخت‌افزار رایانه' },
-//   { id: 24, partName: 'ولوو', founded: "1927", country: 'سوئد', industry: 'وسایل نقلیه' },
-//   { id: 25, partName: 'گودیر', founded: "1898", country: 'ایالات متحده آمریکا', industry: 'لاستیک' },
-//   { id: 26, partName: 'گوگل', founded: "1998", country: 'ایالات متحده آمریکا', industry: 'اینترنت' },
-//   { id: 27, partName: 'پژو', founded: "1810", country: 'فرانسه', industry: 'وسایل نقلیه' },
-//   { id: 28, partName: 'فولکس‌واگن', founded: "1937", country: 'آلمان', industry: 'وسایل نقلیه' },
-//   { id: 29, partName: 'کاسیو', founded: "1946", country: 'ژاپن', industry: 'لوازم الکترونیکی' },
-//   { id: 30, partName: 'نوکیا', founded: "1865", country: 'فنلاند', industry: 'مخابرات' },
-//   { id: 31, partName: 'کداک', founded: "1888", country: 'ایالات متحده آمریکا', industry: 'عکاسی' },
-//   { id: 32, partName: 'پی‌پال', founded: "1998", country: 'ایالات متحده آمریکا', industry: 'خدمات مالی' },
-//   { id: 33, partName: 'پروکتر اند گمبل', founded: "1837", country: 'ایالات متحده آمریکا', industry: 'محصولات مصرفی' },
-//   { id: 34, partName: 'فیلیپس', founded: "1891", country: 'هلند', industry: 'لوازم الکترونیکی' },
-//   { id: 35, partName: 'پرادا', founded: "1913", country: 'ایتالیا', industry: 'پوشاک' },
-//   { id: 36, partName: 'آلیانز', founded: "1890", country: 'آلمان', industry: 'بیمه' },
-//   { id: 37, partName: 'پیرللی', founded: "1872", country: 'ایتالیا', industry: 'لاستیک' },
-//   { id: 38, partName: 'زیمنس', founded: "1847", country: 'آلمان', industry: 'لوازم الکترونیکی' },
-//   { id: 39, partName: 'هیتاچی', founded: "1910", country: 'ژاپن', industry: 'ماشین‌آلات صنعتی' },
-//   { id: 40, partName: 'اوبر', founded: "2009", country: 'ایالات متحده آمریکا', industry: 'تکنولوژی' },
-//   { id: 41, partName: 'نینتندو', founded: "1889", country: 'ژاپن', industry: 'بازی‌های ویدیویی' },
-//   { id: 42, partName: 'کلگیت', founded: "1806", country: 'ایالات متحده آمریکا', industry: 'محصولات بهداشتی' },
-//   { id: 43, partName: 'اکسون موبیل', founded: "1999", country: 'ایالات متحده آمریکا', industry: 'نفت و گاز' },
-//   { id: 44, partName: 'لوریال', founded: "1909", country: 'فرانسه', industry: 'لوازم آرایشی' },
-//   { id: 45, partName: 'کونیکا مینولتا', founded: "1873", country: 'ژاپن', industry: 'عکاسی و چاپ' },
-//   { id: 46, partName: 'شل', founded: "1907", country: 'هلند', industry: 'نفت و گاز' },
-//   { id: 47, partName: 'آئودی', founded: "1909", country: 'آلمان', industry: 'وسایل نقلیه' },
-//   { id: 48, partName: 'رولکس', founded: "1905", country: 'سوئیس', industry: 'ساعت‌سازی' },
-//   { id: 49, partName: 'پرشیا خودرو', founded: "2005", country: 'ایران', industry: 'خدمات خودرو' },
-//   { id: 50, partName: 'یاماها', founded: "1887", country: 'ژاپن', industry: 'موسیقی و وسایل نقلیه' }
-// ];
+
 export const elevatorParts: Part[] = [
   { id:1, partType: 'موتور', partBrand : 'AEG'},
   { id:2, partType: 'موتور', partBrand : 'ALBERTO SASSI'},
@@ -298,3 +245,28 @@ export const elevatorParts: Part[] = [
   { id:188, partType: 'پاوریونیت', partBrand : 'HL'},
 
 ];
+
+
+export const inspectionCosts: InspectionCost[] = [
+  {
+    id:1,
+    inspectionType: "تشکیل پرونده و بازدید اول",
+    cost: 2128770,
+  },
+  {
+    id:2,
+    inspectionType: "اضافه هر توقف",
+    cost: 106438,
+  },
+  {
+    id:3,
+    inspectionType: "بازدید دوم",
+    cost: 1277262,
+  },
+  {
+    id:4,
+    inspectionType: "بازدید سوم",
+    cost: 851508,
+  },
+];
+

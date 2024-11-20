@@ -1,5 +1,5 @@
 import React from 'react';
-import UserForm from './userForm';
+import UserForm from './UserForm';
 import { AddUserProps } from '@/types/main';
 
 export const AddUser: React.FC<AddUserProps> = ({ onClose, onAdd }) => (
