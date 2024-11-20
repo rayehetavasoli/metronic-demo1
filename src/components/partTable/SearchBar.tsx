@@ -10,7 +10,7 @@ const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       onSearch(searchText);
-    }, 300); 
+    }, 3000); 
 
     return () => clearTimeout(delayDebounceFn);
   }, [searchText, onSearch]);
@@ -20,7 +20,7 @@ const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
       type="search"
       value={searchText}
       onChange={(e) => setSearchText(e.target.value)}
-      placeholder="کاربر مورد نظر را جستجو کنید"
+      placeholder="قطعه یا برند مورد نظر را جستجو کنید"
       className="search-input"
     />
   );

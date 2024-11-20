@@ -1,15 +1,15 @@
 import React from 'react';
-import { DeleteBrandProps } from '@/types/main';
+import { DeleteInspectionCostProps } from '@/types/main';
 import { Warning2 } from 'iconsax-react';
 
-const DeleteBrand: React.FC<DeleteBrandProps> = ({ brand, onCancel, onDelete }) => {
+const DeleteInspectionCost: React.FC<DeleteInspectionCostProps> = ({ inspectionCost, onCancel, onDelete }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
     <div className=" px-7 py-6 bg-white dark:bg-dark-bg-primary rounded-[32px] shadow flex flex-col justify-center items-center max-w-md" dir='rtl'>
       <div className="flex flex-col justify-center items-center gap-8">
         <Warning2 className='w-10 h-10 justify-center items-center inline-flex' color='#f8285a'/>
         <h2 className="text-black dark:text-dark-text-primary text-lg font-medium text-right">
-          در صورت تائید برند {brand.brandName} به طور کامل از لیست برندها حذف می شود، آیا مطمئن هستید؟
+          در صورت تائید برند {inspectionCost.inspectionType}به طور کامل از لیست برندها حذف می شود، آیا مطمئن هستید؟
         </h2>
 
         <div className="self-stretch flex justify-center items-center gap-4">
@@ -33,4 +33,4 @@ const DeleteBrand: React.FC<DeleteBrandProps> = ({ brand, onCancel, onDelete }) 
   );
 };
 
-export default DeleteBrand;
+export default DeleteInspectionCost;

@@ -48,41 +48,39 @@ export interface UserFormProps {
   mode: UserFormMode; // مشخص می‌کند که فرم در حالت افزودن یا ویرایش است
 }
 
-//Brands
-export interface Brand {
+//ElevatorParts
+export interface Part{
   id: number;
-  brandName: string;
-  founded: string;
-  country: string;
-  industry: string;
+  partType: string;
+  partBrand: string;
 }
 
-export interface BrandTableProps {
-data: Brand[]; 
-onEdit: (brand: Brand) => void; 
-onDelete: (brand: Brand) => void; 
+export interface PartTableProps {
+data: Part[]; 
+onEdit: (part: Part) => void; 
+onDelete: (part: Part) => void; 
 }
 
-export interface EditBrandProps {
-brand: Brand; 
+export interface EditPartProps {
+part: Part; 
 onClose: () => void;  
-onUpdate: (updatedBrand: Brand) => void; 
+onUpdate: (updatedPart: Part) => void; 
 }
 
-export interface DeleteBrandProps {
-brand: Brand;
+export interface DeletePartProps {
+part: Part;
 onCancel: () => void;
 onDelete: () => void;
 }
 
-export interface AddBrandProps {
-brand: Brand; 
+export interface AddPartProps {
+part: Part; 
 onClose: () => void;  
-onAdd: (addBrand: Brand) => void; 
+onAdd: (addPart: Part) => void; 
 }
 
-export interface HeaderSectionPropsB {
-onAddBrand: (brand: Brand) => void;
+export interface HeaderSectionPropsPart {
+onAddPart: (part: Part) => void;
 onSearch: (query: string) => void;
 }
 
@@ -99,19 +97,59 @@ totalPages: number;
 onPageChange: (page: number) => void;   
 }
 
-export interface Brand {
-id: number;
-brandName: string;
-founded: string;
-country: string;
-industry: string;
+export type PartFormMode = 'add' | 'edit';
+
+export interface PartFormProps {
+part?: Part; // این پراپ اختیاری است، چون در حالت افزودن نیازی به مقدار اولیه نیست.
+onClose: () => void; // تابع بستن فرم
+onSave: (part: Part) => void; // تابع ذخیره که برند جدید یا ویرایش‌شده را می‌گیرد
+mode: PartFormMode; // مشخص می‌کند که فرم در حالت افزودن یا ویرایش است
 }
 
-export type BrandFormMode = 'add' | 'edit';
 
-export interface BrandFormProps {
-brand?: Brand; // این پراپ اختیاری است، چون در حالت افزودن نیازی به مقدار اولیه نیست.
+//هزینه بازرسی استاندارد 
+export interface InspectionCost {
+  id: number;
+  inspectionType: string; // نوع بازرسی
+  cost: number; // هزینه بازرسی
+}
+
+
+export interface InspectionCostTableProps {
+data: InspectionCost[]; 
+onEdit: (inspectionCost: InspectionCost) => void; 
+onDelete: (inspectionCost: InspectionCost) => void; 
+}
+
+export interface EditInspectionCostProps {
+inspectionCost: InspectionCost; 
+onClose: () => void;  
+onUpdate: (updatedInspectionCost: InspectionCost) => void; 
+}
+
+export interface DeleteInspectionCostProps {
+inspectionCost: InspectionCost;
+onCancel: () => void;
+onDelete: () => void;
+}
+
+export interface AddInspectionCostProps {
+inspectionCost: InspectionCost; 
+onClose: () => void;  
+onAdd: (addInspectionCost: InspectionCost) => void; 
+}
+
+export interface HeaderSectionPropsInspectionCost {
+onAddInspectionCost: (inspectionCost: InspectionCost) => void;
+onSearch: (query: string) => void;
+}
+
+
+export type InspectionCostFormMode = 'add' | 'edit';
+
+export interface InspectionCostFormProps {
+inspectionCost?: InspectionCost; // این پراپ اختیاری است، چون در حالت افزودن نیازی به مقدار اولیه نیست.
 onClose: () => void; // تابع بستن فرم
-onSave: (brand: Brand) => void; // تابع ذخیره که برند جدید یا ویرایش‌شده را می‌گیرد
-mode: BrandFormMode; // مشخص می‌کند که فرم در حالت افزودن یا ویرایش است
+onSave: (inspectionCost: InspectionCost) => void; // تابع ذخیره که برند جدید یا ویرایش‌شده را می‌گیرد
+mode: InspectionCostFormMode; // مشخص می‌کند که فرم در حالت افزودن یا ویرایش است
 }

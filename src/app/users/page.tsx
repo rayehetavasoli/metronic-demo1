@@ -1,10 +1,13 @@
 import React from 'react'
 import {UserTable} from '@/components/userTable/index'
 import {users} from '@/db/main'
+import MainLayout from '@/view/layout/MainLayout'
 
 function Users() {
   return (
-    <UserTable data={users}/>
+    <MainLayout>
+      <UserTable data={users} />
+    </MainLayout>
   )
 }
 

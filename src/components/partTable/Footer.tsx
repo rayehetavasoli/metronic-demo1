@@ -22,7 +22,7 @@ const Footer: FC<FooterProps> = ({ pageSize, onPageSizeChange, currentPage, tota
             <option
               key={size}
               value={size}
-              className="bg-gray-300  dark:bg-dark-bg-secondary text-black dark:text-dark-text-primary text-sm font-medium rounded-[16px]"
+              className="bg-gray-300 dark:bg-dark-bg-secondary text-black dark:text-dark-text-primary text-sm font-medium rounded-[16px]"
             >
               {size}
             </option>

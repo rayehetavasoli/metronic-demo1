@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Add, SearchNormal1, UserEdit } from 'iconsax-react';
-import {AddUser} from './addUser';
+import {AddUser} from './AddUser';
 import { User } from '@/types/main';
 import { v4 as uuidv4 } from 'uuid';
 import { HeaderSectionProps } from '@/types/main';
+import SearchBar from './SearchBar';
 import "./style/searchBar.css"
 
 
@@ -14,10 +15,6 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({ onAddUser, onSearch }) =>
   const handleAddUser = (user: User) => {
     onAddUser(user);
     setIsAddUserOpen(false);
-  };
-
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onSearch(event.target.value);
   };
 
   return (
@@ -33,12 +30,7 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({ onAddUser, onSearch }) =>
             <button>
               <SearchNormal1 className="search-icon" />
             </button>
-            <input
-              className="search-input"
-              type="search"
-              placeholder="کاربر مورد نظر را جستجو کنید"
-              onChange={handleSearch}
-            />
+            <SearchBar onSearch={onSearch}/>
           </div>
 
           <button onClick={() => setIsAddUserOpen(true)}>
