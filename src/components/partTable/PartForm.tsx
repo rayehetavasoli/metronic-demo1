@@ -1,28 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { CloseCircle, AddCircle, Edit2 } from "iconsax-react";
-import { BrandFormProps, Brand } from '@/types/main';
-import "./style/brandForm.css"
+import { PartFormProps, Part } from '@/types/main';
+import "./style/PartForm.css";
 
-const BrandForm: React.FC<BrandFormProps> = ({ brand, onClose, onSave, mode }) => {
-  const [formData, setFormData] = useState<Brand>({
-    id: brand?.id || 0,
-    brandName: brand?.brandName || '',
-    founded: brand?.founded || '',
-    country: brand?.country || '',
-    industry: brand?.industry || '',
+const PartForm: React.FC<PartFormProps> = ({ part, onClose, onSave, mode }) => {
+  const [formData, setFormData] = useState<Part>({
+    id: part?.id || 0,
+    partType: part?.partType || '',
+    partBrand: part?.partBrand || '',
   });
 
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setFormData({
-      id: brand?.id || 0,
-      brandName: brand?.brandName || '',
-      founded: brand?.founded || '',
-      country: brand?.country || '',
-      industry: brand?.industry || '',
+      id: part?.id || 0,
+      partType: part?.partType || '',
+      partBrand: part?.partBrand || '',
     });
-  }, [brand]);
+  }, [part]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -30,8 +26,8 @@ const BrandForm: React.FC<BrandFormProps> = ({ brand, onClose, onSave, mode }) =
   };
 
   const handleSubmit = () => {
-    const { brandName, founded, country, industry } = formData;
-    if (!brandName || !founded || !country || !industry) {
+    const { partType , partBrand } = formData;
+    if (!partType || !partBrand ) {
       setError("تمامی فیلدها الزامی است");
       return;
     }
@@ -50,30 +46,26 @@ const BrandForm: React.FC<BrandFormProps> = ({ brand, onClose, onSave, mode }) =
         <div className="flex-col justify-center items-start gap-5 inline-flex">
           <div className="self-stretch px-2 justify-start items-center gap-1 inline-flex">
             {mode === 'add' ? <AddCircle className="w-5 h-5 text-gray-900 dark:text-gray-300" /> : <Edit2 className="w-5 h-5 text-gray-900 dark:text-gray-300" />}
-            <div className="text-lg font-semibold dark:text-gray-100">{mode === 'add' ? 'افزودن برند جدید' : 'ویرایش اطلاعات برند'}</div>
+            <div className="text-lg font-semibold dark:text-gray-100">{mode === 'add' ? 'افزودن قطعه جدید' : 'ویرایش اطلاعات قطعه'}</div>
           </div>
 
           <form onSubmit={(e) => e.preventDefault()} className="flex flex-row gap-4 justify-center items-center">
             <div className="flex-col justify-center items-end gap-7 inline-flex">
-              <label className="label dark:text-gray-100">نام</label>
-              <label className="label dark:text-gray-100">سال تاسیس</label>
-              <label className="label dark:text-gray-100">کشور</label>
-              <label className="label dark:text-gray-100">صنعت</label>
+              <label className="label dark:text-gray-100">نوع قطعه</label>
+              <label className="label dark:text-gray-100">برند قطعه</label>
             </div>
 
             <div className="p-3 flex-col justify-center items-center gap-7 inline-flex"> 
-              {['brandName', 'founded', 'country', 'industry'].map((field, index) => (
+              {['partType', 'partBrand'].map((field, index) => (
                 <div key={index} className="bg-light-bg-primary dark:bg-dark-bg-primary rounded-xl justify-between items-center gap-2 inline-flex w-full px-3 py-2">
                   <input
                     type="text"
                     name={field}
                     placeholder={`${
-                      field === 'brandName' ? 'نام برند' : 
-                      field === 'founded' ? 'سال تاسیس' : 
-                      field === 'country' ? 'کشور سازنده' : 
-                      'نوع صنعت'
+                      field === 'partType' ? 'نوع قطعه' : 
+                      'برند قطعه'
                     }`}
-                    value={formData[field as keyof Brand]}
+                    value={formData[field as keyof Part]}
                     onChange={handleChange}
                     className="grow shrink basis-0 text-right text-black dark:text-gray-100 text-md font-normal bg-light-bg-primary dark:bg-dark-even-table w-full border-none rounded-[6px] outline-none focus:ring-0 "
                   />
@@ -95,4 +87,4 @@ const BrandForm: React.FC<BrandFormProps> = ({ brand, onClose, onSave, mode }) =
   );
 };
 
-export default BrandForm;
+export default PartForm;

@@ -20,7 +20,7 @@ const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
       type="text"
       value={searchText}
       onChange={(e) => setSearchText(e.target.value)}
-      placeholder="برند مورد نظر را جستجو کنید"
+      placeholder="قطعه یا برند مورد نظر را جستجو کنید"
       className="mb-4 p-2 border border-gray-300 rounded-md w-full text-right"
     />
   );

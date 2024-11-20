@@ -29,7 +29,7 @@ function Sidebar() {
             </div>
             <div className="baseinfo-item">
               <Notepad  className="icon dark:text-dark-text-primary" color="currentColor"/>
-                <Link href="/brands" className="link dark:text-gray-200 ">برند </Link>
+                <Link href="/parts" className="link dark:text-gray-200 ">برند </Link>
                   
             </div>
         </div>
