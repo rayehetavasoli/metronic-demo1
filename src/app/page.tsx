@@ -1,10 +1,13 @@
+import MainLayout from '@/view/layout/MainLayout'
 import React from 'react'
 
 
-export default async function Dashboard() {
-
-  
+function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <MainLayout>
+    <div>dashboard</div>
+    </MainLayout>
   )
 }
+
+export default Dashboard
