@@ -33,8 +33,11 @@ const config: Config = {
         "dark-bg-table" : "#343434",
         "dark-odd-table":"#2E2E2F",
         "dark-even-table": "#29292C",
-        
       },
+      backgroundImage: {
+        'light-auth-bg': "url('@/assets/images/bg-10.png')",
+        'dark-auth-bg': "url('@/assets/images/bg-10-dark.png')",
+      }
     },
   },
   plugins: [],
