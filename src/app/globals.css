@@ -1,11 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url(../assets/style/fontiran.css); 
 
-@font-face {
-  font-family: "persian-number";
-  src: url("../assets/fonts/Vazir.ttf");
-}
 
 *,:after,:before {
   box-sizing: border-box;
@@ -30,6 +27,9 @@
 }
 
 body {
-  margin: 0;
-  line-height: inherit
+	font-family: IRANSansX  !important;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6,input, textarea {
+	font-family: IRANSansX !important;
 }
