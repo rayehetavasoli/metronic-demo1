@@ -39,7 +39,6 @@ function EnterEmailForm() {
     };
 
     return (
-        <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg h-lvh" dir='rtl'>
             <div className="card max-w-[370px] w-full">
                 <form onSubmit={enterEmailHandler} className="card-body flex flex-col gap-5 p-10" id="reset_password_enter_email_form">
                     <div className="text-center mb-2.5">
@@ -64,12 +63,11 @@ function EnterEmailForm() {
                     {errors.general && <p className="error-text">An error occurred while sending the email. Please try again.</p>}
 
                     <button type="submit" className={`btn btn-primary flex justify-center grow ${loading ? 'loading' : ''}`} disabled={loading}>
-                        {loading ? 'Sending...' : 'Continue'}
+                        {loading ? 'درحال ارسال...' : 'ادامه'}
                         <ArrowRight size="16" color="#fff" />
                     </button>
                 </form>
             </div>
-        </div>
     );
 }
 

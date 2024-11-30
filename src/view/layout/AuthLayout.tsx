@@ -6,7 +6,7 @@ interface AuthLayoutProps {
 
 const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
   return (
-    <div lang="fa" className=" flex items-center justify-center grow bg-center bg-no-repeat bg-light-auth-bg dark:bg-dark-auth-bg m-0">
+    <div className=" flex items-center justify-center grow bg-center bg-no-repeat bg-light-auth-bg dark:bg-dark-auth-bg m-0 min-h-lvh" dir='rtl'>
       {children}
     </div>
   );

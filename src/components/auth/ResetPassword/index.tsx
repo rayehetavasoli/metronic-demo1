@@ -59,7 +59,6 @@ function ResetPasswordForm() {
     };
 
     return (
-        <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg h-lvh" dir='rtl'>
             <div className="card max-w-[370px] w-full">
                 <form onSubmit={resetPasswordHandler} className="card-body flex flex-col gap-5 p-10" id="reset_password_change_password_form">
                     <div className="text-center">
@@ -113,8 +112,6 @@ function ResetPasswordForm() {
                         {loading ? 'درحال ثبت کردن...' : 'ثبت'}
                     </button>
                 </form>
-                
-            </div>
         </div>
     );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import EnterEmailForm from "@/components/auth/EnterEmai";
+import EnterEmailForm from "@/components/auth/EnterEmail";
 import AuthLayout from "@/view/layout/AuthLayout";
 
 const EnterEmail = () => {

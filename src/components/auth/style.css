@@ -8,7 +8,8 @@
   box-shadow: var(--tw-card-box-shadow);
   background-color: var(--tw-card-background-color);
   border-radius: .75rem;
-  border: var(--tw-card-border)
+  border: var(--tw-card-border);
+  
 }
 .form-label {
   display: flex;
