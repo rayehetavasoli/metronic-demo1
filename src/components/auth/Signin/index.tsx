@@ -59,18 +59,17 @@ function SigninForm() {
 
 
   return (
-     <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg h-lvh" dir='rtl'>
       <div className="card max-w-[370px] w-full">
         <form onSubmit={signinHandler} className="card-body flex flex-col gap-5 p-10">
             <div className="text-center mb-2.5">
-                <h3 className="text-lg font-medium text-gray-900 leading-none mb-2.5 dark:text-gray-300">
+                <h3 className="text-xl font-medium text-gray-900 leading-none mb-2.5 dark:text-gray-300">
                     ورود
                 </h3>
                 <div className="flex items-center justify-center font-medium">
                     <span className="text-2sm text-gray-700 me-1.5">
                      نیاز به حساب کابری دارید؟
                      </span>
-                    <Link className="text-2sm link" href="/auth/signup">
+                    <Link className="text-2sm link dark:text-gray-400" href="/auth/signup">
                      ثبت نام
                     </Link>
                 </div>
@@ -96,7 +95,7 @@ function SigninForm() {
                     <label className="form-label font-normal text-gray-900">
                     رمز عبور
                     </label>
-                    <Link className="text-2sm link shrink-0" href="/auth/enter-email/">
+                    <Link className="text-2sm link shrink-0 dark:text-gray-400" href="/auth/enter-email/">
                         فراموشی رمز عبور ؟
                     </Link>
                 </div>
@@ -132,7 +131,6 @@ function SigninForm() {
 
         </form>
         
-        </div>
     </div>
   )
 }

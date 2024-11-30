@@ -7,7 +7,6 @@ import './../style.css';
 const CheckEmailForm= () => {
   const email = localStorage.getItem('userEmail');
   return (
-    <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg h-lvh" dir='rtl'>
       <div className="card max-w-[440px] w-full py-5">
         <div className="card-body p-10">
           <h3 className="text-lg font-medium text-gray-900 text-center mb-3 dark:text-gray-300">
@@ -36,7 +35,6 @@ const CheckEmailForm= () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

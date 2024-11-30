@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@iconsans/react": "^1.0.6",
+    "@next/bundle-analyzer": "^15.0.3",
     "@reduxjs/toolkit": "^2.2.8",
     "axios": "^1.7.7",
     "iconsax-react": "^0.0.8",

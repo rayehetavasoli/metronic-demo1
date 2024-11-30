@@ -23,7 +23,7 @@ const HeaderSection: React.FC<HeaderSectionPropsPart> = ({ onAddPart, onSearch }
       <header className="flex justify-between items-center mb-3 px-4" dir="rtl">
         <div className="p-2 flex items-center gap-2">
           <Setting3 className="w-6 h-6 dark:text-gray-100" />
-          <h1 className="text-2xl font-semibold dark:text-gray-100">قطعات</h1>
+          <h1 className="text-2xl font-semibold dark:text-gray-100">قطعات آسانسور</h1>
         </div>
 
         <div className="flex items-center gap-3">

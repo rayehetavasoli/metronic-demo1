@@ -9,7 +9,7 @@ const DeletePart: React.FC<DeletePartProps> = ({ part, onCancel, onDelete }) => 
       <div className="flex flex-col justify-center items-center gap-8">
         <Warning2 className='w-10 h-10 justify-center items-center inline-flex' color='#f8285a'/>
         <h2 className="text-black dark:text-dark-text-primary text-lg font-medium text-right">
-          در صورت تائید برند {part.partType}{part.partBrand} به طور کامل از لیست برندها حذف می شود، آیا مطمئن هستید؟
+          در صورت تائید برند {part.partType} {part.partBrand}  به طور کامل از لیست برندها حذف می شود، آیا مطمئن هستید؟
         </h2>
 
         <div className="self-stretch flex justify-center items-center gap-4">

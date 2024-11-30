@@ -5,7 +5,7 @@ import React from 'react'
 function Dashboard() {
   return (
     <MainLayout>
-    <div>dashboard</div>
+    <div className='justify-center items-center flex'>dashboard</div>
     </MainLayout>
   )
 }

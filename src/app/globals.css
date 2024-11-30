@@ -1,11 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url(../assets/style/fontiran.css); 
 
-@font-face {
-  font-family: "persian-number";
-  src: url("../assets/fonts/Vazir.ttf");
-}
 
 *,:after,:before {
   box-sizing: border-box;
@@ -15,7 +12,7 @@
 }
 
 :after,:before {
-  --tw-content: ""
+  --tw-content: "";
 }
 
 :host,html {
@@ -26,10 +23,26 @@
   tab-size: 4;
   font-feature-settings: normal;
   font-variation-settings: normal;
-  -webkit-tap-highlight-color: transparent
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  margin: 0;
-  line-height: inherit
+	font-family: IRANSansX  !important;
+	margin: 0;
 }
+h1, h2, h3, h4, h5, h6,input, textarea {
+	font-family: IRANSansX !important;
+}
+
+/* 
+
+// Extra Small devices (landscape phones,320px and up)
+$site-width-xs: 320px;
+// Small devices (landscape phones, 568px and up)
+$site-width-sm: 568px;
+// Medium devices (tablets, 834px and up)
+$site-width-md: 834px;
+// Large devices (desktops, 1194px and up)
+$site-width-lg: 1194px;
+// Extra large devices (large desktops, 1440px and up)
+$site-width-xl: 1440px; */

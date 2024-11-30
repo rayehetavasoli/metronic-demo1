@@ -67,7 +67,6 @@ function SignupForm() {
     };
 
     return (
-        <div className="flex items-center justify-center h-lvh grow bg-center bg-no-repeat page-bg" dir='rtl'>
             <div className="card max-w-[370px] w-full">
                 <form onSubmit={signupHandler} className="card-body flex flex-col gap-5 p-10" id="sign_up_form">
                     <div className="text-center mb-2.5">
@@ -148,7 +147,6 @@ function SignupForm() {
 
                 </form>
             </div>
-        </div>
     );
 }
 
